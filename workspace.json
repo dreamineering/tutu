@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "projects": {
+    "ethereum": "libs/ethereum",
+    "nft-marketplace": "apps/nft-marketplace",
+    "nft-marketplace-e2e": "apps/nft-marketplace-e2e",
+    "scaffold-eth": "apps/scaffold-eth",
+    "scaffold-eth-e2e": "apps/scaffold-eth-e2e",
+    "shared-data-access-integrations": "libs/shared/data-access/integrations",
+    "shared-data-access-scaffold-eth": "libs/shared/data-access/scaffold-eth",
+    "shared-ui": "libs/shared/ui",
+    "stackmates": "apps/stackmates",
+    "stackmates-e2e": "apps/stackmates-e2e",
+    "storybook-e2e-ui-e2e": "apps/storybook-e2e/ui-e2e"
+  }
+}

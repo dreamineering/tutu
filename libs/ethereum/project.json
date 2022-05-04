@@ -1,0 +1,72 @@
+{
+  "root": "libs/ethereum",
+  "sourceRoot": "libs/ethereum/src",
+  "projectType": "library",
+  "targets": {
+    "hh-deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn hardhat deploy"
+      }
+    },
+    "hh-deploy-polygon-test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn hardhat deploy --network mumbai"
+      }
+    },
+    "hh-node": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "hardhat node"
+      }
+    },
+    "hh-clean": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn hardhat clean"
+      }
+    },
+    "hh-compile": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "hardhat compile"
+      }
+    },
+    "hh-generate": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "yarn hardhat generate"
+          }
+        ]
+      }
+    },
+    "hh-test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn hardhat test --network hardhat"
+      }
+    },
+    "hhcl-test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "hardhat test ./libs/ethereum/src/test/unit/*.spec.ts --network hardhat"
+      }
+    },
+    "hh-account": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "hardhat account"
+      }
+    },
+    "hh-accounts": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "hardhat accounts"
+      }
+    }
+  },
+  "tags": []
+}

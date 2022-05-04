@@ -1,0 +1,28 @@
+{
+  "root": "apps/stackmates-e2e",
+  "sourceRoot": "apps/stackmates-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/stackmates-e2e/cypress.json",
+        "devServerTarget": "stackmates:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "stackmates:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/stackmates-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["stackmates"]
+}

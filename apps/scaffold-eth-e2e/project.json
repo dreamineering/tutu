@@ -1,0 +1,28 @@
+{
+  "root": "apps/scaffold-eth-e2e",
+  "sourceRoot": "apps/scaffold-eth-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/scaffold-eth-e2e/cypress.json",
+        "devServerTarget": "scaffold-eth:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "scaffold-eth:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/scaffold-eth-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["scaffold-eth"]
+}

@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext",  "dom.iterable",  "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@drmg/ethereum": ["libs/ethereum/src/index.ts"],
+      "@drmg/shared/data-access/integrations": [
+        "libs/shared/data-access/integrations/src/index.ts"
+      ],
+      "@drmg/shared/data-access/scaffold-eth": [
+        "libs/shared/data-access/scaffold-eth/src/index.ts"
+      ],
+      "@drmg/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@drmg/stackmates": ["apps/stackmates/index.d.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

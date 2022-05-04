@@ -1,0 +1,25 @@
+{
+  "root": "libs/shared/data-access/integrations",
+  "sourceRoot": "libs/shared/data-access/integrations/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/data-access/integrations/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/data-access/integrations"],
+      "options": {
+        "jestConfig": "libs/shared/data-access/integrations/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
