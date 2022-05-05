@@ -18,6 +18,6 @@ Innovate at the edges then pull proven patterns into the core.
 - [ ] Create a DAO with Multi-Sig to run operations
 - [ ] Create a DeFi operations project to leverage capital
 - [ ] Create a base marketing project to sell ideas
-- [ ] Use software to create **real world** value
+- [ ] Use software to create [real world](https://mm.dreamineering.com/docs/projects/apps/) value
 
 Evolve [roadmaps](https://mm.dreamineering.com/docs/engineering/software/developer-roadmaps) to create more [engineers](https://mm.dreamineering.com/docs/engineering/).
