@@ -6,7 +6,8 @@ import { useThemeSwitcher } from 'react-css-theme-switcher';
 import { useEthersContext } from '@drmg/shared/ui';
 
 
-const initialTheme = window.localStorage.getItem('theme') ?? 'light';
+// const initialTheme = window.localStorage.getItem('theme') ?? 'light';
+const initialTheme = 'dark' ?? 'light';
 
 export const ThemeSwitcher: FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(initialTheme === 'dark');
@@ -14,9 +15,16 @@ export const ThemeSwitcher: FC = () => {
   const ethersContext = useEthersContext();
 
   useEffect(() => {
-    window.localStorage.setItem('theme', currentTheme ?? '');
-    if (currentTheme === 'light' || currentTheme === 'dark') {
-      ethersContext?.setModalTheme?.(currentTheme);
+    if (typeof window !== 'undefined') {
+      console.log('You are on the browser');
+      // ✅ Can use window here
+      window.localStorage.setItem('theme', currentTheme ?? '');
+      if (currentTheme === 'light' || currentTheme === 'dark') {
+        ethersContext?.setModalTheme?.(currentTheme);
+      }
+    } else {
+      console.log('You are on the server');
+      // ⛔️ Don't use window here
     }
   }, [currentTheme]);
 
