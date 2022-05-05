@@ -28,6 +28,7 @@
     "@sanity/client": "^3.3.0",
     "@uniswap/sdk": "^3.0.3",
     "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "@walletconnect/ethereum-provider": "^1.7.8",
     "@walletconnect/web3-provider": "^1.7.8",
     "@web3-ui/components": "^0.12.0",
     "antd": "^4.20.2",
