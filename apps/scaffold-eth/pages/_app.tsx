@@ -1,5 +1,13 @@
 import '../assets/chrome-bug.css';
 import '../assets/main.css';
+// setup themes for theme switcher
+const themes = {
+  dark: '../assets/dark-theme.css',
+  light: './assets/light-theme.css',
+};
+import { ThemeSwitcherProvider } from 'react-css-theme-switcher';
+// load saved theme
+// const savedTheme = window.localStorage.getItem('theme');
 
 import { Suspense } from 'react';
 import Head from 'next/head';
@@ -23,9 +31,11 @@ function CustomApp({ Component, pageProps }) {
           <ContractsAppContext>
             <EthersAppContext>
               <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <ThemeSwitcherProvider themeMap={themes} defaultTheme={'light'}>
                 <Suspense fallback={<div />}>
                   <Component {...pageProps} />
                 </Suspense>
+                </ThemeSwitcherProvider>
               </ErrorBoundary>
             </EthersAppContext>
           </ContractsAppContext>

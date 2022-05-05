@@ -1,5 +1,6 @@
 // IMPORT and SET CONSTANTS
 import { NETWORKS, ALCHEMY_KEY } from '../constants';
+import { BURNER_FALLBACK_ENABLED, MAINNET_PROVIDER } from '../config/app.config';
 import externalContracts from '../contracts/external_contracts';
 import deployedContracts from '../contracts/hardhat_contracts.json';
 const initialNetwork = NETWORKS.localhost;
@@ -10,10 +11,6 @@ import { Button, Col, Row } from 'antd';
 
 // REACT
 import { useCallback, useEffect, useState } from 'react';
-// Data Fetching
-// import dynamic from "next/dynamic";
-//import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-//const queryClient = new QueryClient();
 
 // WEB3
 import ethers from 'ethers';
@@ -22,7 +19,7 @@ import ethers from 'ethers';
 
 import {
   useBalance, // good
-  // useContractLoader,
+  useContractLoader,
   useContractReader,
   // useGasPrice,
   // useOnBlock,
@@ -31,6 +28,15 @@ import {
   //  useDexEthPrice
   //
 } from '@drmg/shared/ui';
+
+import { useScaffoldProviders as useScaffoldAppProviders } from '../components/typescript/main/hooks/useScaffoldAppProviders';
+
+import {
+  MainPageFooter,
+  MainPageHeader,
+  createPagesAndTabs,
+  TContractPageList,
+} from '../components/typescript/main';
 
 import { useStaticJsonRPC } from '../hooks';
 
@@ -57,6 +63,11 @@ export function New() {
   console.log('EXTERNAL_CONTRACTS', externalContracts);
   console.log('DEPLOYED_CONTRACTS', deployedContracts);
 
+  const contractConfig = {
+    deployedContracts: deployedContracts || {},
+    externalContracts: externalContracts || {},
+  };
+
   // const yourContract = useAppContracts('YourContract', ethersContext.chainId);
 
   // LOCAL PROVIDER
@@ -74,6 +85,14 @@ export function New() {
   console.log('MAINNET_PROVIDER', mainnetProvider);
   const yourMainnetBalance = useBalance(mainnetProvider, address);
   console.log('MAINNET_BALANCE', yourMainnetBalance);
+
+// app hooks
+  // -----------------------------
+  // Providers, signers & wallets
+  // -----------------------------
+  // 🛰 providers
+  // see useLoadProviders.ts for everything to do with loading the right providers
+  const scaffoldAppProviders = useScaffoldAppProviders();
 
   return (
     <div className="text-lg">

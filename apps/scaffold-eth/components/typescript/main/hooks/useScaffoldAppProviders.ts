@@ -1,27 +1,28 @@
-import { useEthersAdaptorFromProviderOrSigners } from 'eth-hooks';
-import {
-  EthersModalConnector,
-  TEthersModalConnector,
-  useEthersContext,
-} from 'eth-hooks/context';
-import {
-  TCreateEthersModalConnector,
-  TEthersAdaptor,
-  TEthersProvider,
-  TNetworkInfo,
-} from 'eth-hooks/models';
-import { useCallback, useEffect, useState } from 'react';
-import { useThemeSwitcher } from 'react-css-theme-switcher';
-import { invariant } from 'ts-invariant';
-import { ICoreOptions } from 'web3modal';
-
 import {
   MAINNET_PROVIDER,
   LOCAL_PROVIDER,
   CONNECT_TO_BURNER_AUTOMATICALLY,
   TARGET_NETWORK_INFO,
-} from '~~/config/app.config';
-import { web3ModalConfigKeys } from '~~/config/web3Modal.config';
+} from '../../../../config/app.config';
+import { web3ModalConfigKeys } from '../../../../config/web3Modal.config';
+
+import { useThemeSwitcher } from 'react-css-theme-switcher';
+import { useCallback, useEffect, useState } from 'react';
+import { invariant } from 'ts-invariant';
+
+import { ICoreOptions } from 'web3modal';
+import {
+  useEthersAdaptorFromProviderOrSigners,
+  EthersModalConnector,
+  TEthersModalConnector,
+  useEthersContext,
+  TCreateEthersModalConnector,
+  TEthersAdaptor,
+  TEthersProvider,
+  TNetworkInfo,
+} from '@drmg/shared/ui';
+
+
 
 export interface IScaffoldAppProviders {
   currentProvider: TEthersProvider | undefined;
@@ -40,9 +41,7 @@ export const useScaffoldProviders = (): IScaffoldAppProviders => {
 
   useEffect(() => {
     // import async to split bundles
-    const importedConfig = import(
-      '../../../../../scaffold-eth-ts/config/web3Modal.config'
-    );
+    const importedConfig = import('../../../../config/web3Modal.config');
 
     importedConfig
       .then((getter) => {

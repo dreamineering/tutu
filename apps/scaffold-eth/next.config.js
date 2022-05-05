@@ -5,6 +5,9 @@ const withNx = require('@nrwl/next/plugins/with-nx');
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
+  env: {
+    TARGET_NETWORK: process.env.NEXT_PUBLIC_TARGET_NETWORK,
+  },
   nx: {
     // Set this to true if you would like to to use SVGR
     // See: https://github.com/gregberge/svgr

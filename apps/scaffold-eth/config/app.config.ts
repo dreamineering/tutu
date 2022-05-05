@@ -10,7 +10,8 @@ import { TNetworkInfo, TEthersProvider } from '@drmg/shared/ui';
 export const DEBUG = true;
 
 // https://www.npmjs.com/package/ts-invariant
-invariant.log('MODE', process.env.MODE, process.env.DEV);
+// invariant.log('MODE', process.env.MODE, process.env.SCAFFOLD_APP_DEV);
+
 /** ******************************
  * TARGET NETWORK CONFIG: 📡 What chain are your contracts deployed to?
  ****************************** */
@@ -21,18 +22,25 @@ invariant.log('MODE', process.env.MODE, process.env.DEV);
  */
 
 const targetNetwork: TNetworkNames = process.env
-  .SCAFFOLD_APP_TARGET_NETWORK as TNetworkNames;
+  .TARGET_NETWORK as TNetworkNames;
+// const targetNetwork: string =
+//   process.env.TARGET_NETWORK;
 
-invariant.log(
-  'SCAFFOLD_APP_TARGET_NETWORK',
-  process.env.SCAFFOLD_APP_TARGET_NETWORK
-);
+invariant.log('TARGET_NETWORK', targetNetwork);
 invariant(
   NETWORKS[targetNetwork] != null,
   `Invalid target network: ${targetNetwork}`
 );
 
+console.log('targetNetwork', targetNetwork);
+console.log(
+  'NEXT_PUBLIC_TARGET_NETWORK---',
+  process.env.NEXT_PUBLIC_TARGET_NETWORK
+);
+
 export const TARGET_NETWORK_INFO: TNetworkInfo = NETWORKS[targetNetwork];
+// export const TARGET_NETWORK_INFO: TNetworkInfo = NETWORKS['localhost'];
+
 if (DEBUG) console.log(`📡 Connecting to ${TARGET_NETWORK_INFO.name}`);
 
 /** ******************************
@@ -48,13 +56,13 @@ export const FAUCET_ENABLED =
  */
 export const BURNER_FALLBACK_ENABLED =
   process.env.SCAFFOLD_APP_BURNER_FALLBACK_ALLOWED === 'true' &&
-  process.env.DEV;
+  process.env.SCAFFOLD_APP_DEV;
 /**
  * Connect to burner on first load if there are no cached providers
  */
 export const CONNECT_TO_BURNER_AUTOMATICALLY =
   process.env.SCAFFOLD_APP_CONNECT_TO_BURNER_AUTOMATICALLY === 'true' &&
-  process.env.DEV;
+  process.env.SCAFFOLD_APP_DEV;
 
 if (DEBUG)
   invariant.log(
