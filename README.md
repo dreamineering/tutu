@@ -5,3 +5,19 @@
 Become efficient at running experiments so you can go from idea to creating value in the shortest time possible.
 
 Innovate at the edges then pull proven patterns into the core.
+
+## Links
+
+- [Web3 Analysis](https://mm.dreamineering.com/docs/blockchain/)
+- [Web3 Startup Playbook](https://mm.dreamineering.com/docs/blockchain/startups/playbook)
+
+## Plan
+
+- [ ] Make it easier to take scaffold-eth prototyping into projects
+- [ ] Add Cosmos as comparison to Eth Development
+- [ ] Create a DAO with Multi-Sig to run operations
+- [ ] Create a DeFi operations project to leverage capital
+- [ ] Create a base marketing project to sell ideas
+- [ ] Use software to create **real world** value
+
+Evolve [roadmaps](https://mm.dreamineering.com/docs/engineering/software/developer-roadmaps) to create more [engineers](https://mm.dreamineering.com/docs/engineering/).
