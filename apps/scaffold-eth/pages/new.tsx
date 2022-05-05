@@ -49,7 +49,7 @@ export function New() {
 
   const targetNetwork = NETWORKS[selectedNetwork];
 
-  console.log('NETWORK-CONSTANTS', NETWORKS);
+  // console.log('NETWORK-CONSTANTS', NETWORKS);
   console.log('TARGET_NETWORK', targetNetwork);
   console.log('ALCHEMY_KEY', ALCHEMY_KEY);
 
