@@ -1,32 +1,36 @@
-// IMPORT CONSTANTS
+// IMPORT and SET CONSTANTS
 import { NETWORKS, ALCHEMY_KEY } from '../constants';
+import externalContracts from '../contracts/external_contracts';
+import deployedContracts from '../contracts/hardhat_contracts.json';
 const initialNetwork = NETWORKS.localhost;
 
-// IMPORT CONTRACTS
-import externalContracts from '../contracts/external_contracts';
-// contracts
-import deployedContracts from '../contracts/hardhat_contracts.json';
-
-
+// STYLING
 import 'antd/dist/antd.css';
 import { Button, Col, Row } from 'antd';
 
+// REACT
 import { useCallback, useEffect, useState } from 'react';
-import dynamic from "next/dynamic";
+// Data Fetching
+// import dynamic from "next/dynamic";
+//import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+//const queryClient = new QueryClient();
 
+// WEB3
 import ethers from 'ethers';
 
 // const useBalance = dynamic(() => import("eth-hooks"));
 
 import {
-  useBalance,
+  useBalance, // good
   // useContractLoader,
-  // useContractReader,
+  useContractReader,
   // useGasPrice,
   // useOnBlock,
   // useUserProviderAndSigner,
+  //useEventListener  v4
+  //  useDexEthPrice
+  //
 } from '@drmg/shared/ui';
-
 
 import { useStaticJsonRPC } from '../hooks';
 
@@ -45,34 +49,31 @@ export function New() {
 
   const targetNetwork = NETWORKS[selectedNetwork];
 
-  console.log('NETWORKS', NETWORKS);
+  console.log('NETWORK-CONSTANTS', NETWORKS);
   console.log('TARGET_NETWORK', targetNetwork);
   console.log('ALCHEMY_KEY', ALCHEMY_KEY);
 
+  // DEPLOYED CONTRACTS
+  console.log('EXTERNAL_CONTRACTS', externalContracts);
+  console.log('DEPLOYED_CONTRACTS', deployedContracts);
+
+  // const yourContract = useAppContracts('YourContract', ethersContext.chainId);
+
+  // LOCAL PROVIDER
   const localProvider = useStaticJsonRPC([
     process.env.REACT_APP_PROVIDER
-    ? process.env.REACT_APP_PROVIDER
-    : targetNetwork.rpcUrl,
+      ? process.env.REACT_APP_PROVIDER
+      : targetNetwork.rpcUrl,
   ]);
-
   console.log('LOCAL_PROVIDER', localProvider);
-
-
-  const mainnetProvider = useStaticJsonRPC(providers);
-
-
   const yourLocalBalance = useBalance(localProvider, address);
+  console.log('LOCAL_BALANCE', yourLocalBalance);
 
-  // // Just plug in different 🛰 providers to get your balance on different chains:
-  // const yourMainnetBalance = useBalance(mainnetProvider, address);
-
-
-
-  console.log('externalContracts', externalContracts);
-  console.log('deployedContracts', deployedContracts);
-
-  // balances
-  // console.log('yourLocalBalance', yourLocalBalance);
+  // MAINNET PROVIDER
+  const mainnetProvider = useStaticJsonRPC(providers);
+  console.log('MAINNET_PROVIDER', mainnetProvider);
+  const yourMainnetBalance = useBalance(mainnetProvider, address);
+  console.log('MAINNET_BALANCE', yourMainnetBalance);
 
   return (
     <div className="text-lg">

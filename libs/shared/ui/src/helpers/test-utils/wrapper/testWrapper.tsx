@@ -4,10 +4,10 @@ import { FC } from 'react';
 
 import { waitForActivation, isActive } from './wrapperHelpers';
 
-import { getMockProvider } from '~~/helpers/test-utils/wrapper/getMockProvider';
-import { MockConnector } from '~~/helpers/test-utils/wrapper/MockConnector';
-import { TestAppWrapper } from '~~/helpers/test-utils/wrapper/TestAppWrapper';
-import { TCreateEthersModalConnector } from '~~/models/ethersAppContextTypes';
+import { getMockProvider } from './getMockProvider';
+import { MockConnector } from './MockConnector';
+import { TestAppWrapper } from './TestAppWrapper';
+import { TCreateEthersModalConnector } from '../../../models/ethersAppContextTypes';
 const mockProvider = getMockProvider();
 const mockConnector = new MockConnector(mockProvider);
 
@@ -25,7 +25,9 @@ export type TTestHookResult<TCallbackToHook extends (input: any) => any> = Omit<
  * @see renderHook from @link testing-library/react-hooks
  * @returns (TTestHookResult)
  */
-export const hookTestWrapper = async <TCallbackToHook extends (input: any) => any>(
+export const hookTestWrapper = async <
+  TCallbackToHook extends (input: any) => any
+>(
   callbackToHook: TCallbackToHook
 ): Promise<TTestHookResult<TCallbackToHook>> => {
   const createMockConnector: TCreateEthersModalConnector = () => {
@@ -36,14 +38,20 @@ export const hookTestWrapper = async <TCallbackToHook extends (input: any) => an
     Parameters<TCallbackToHook> & {
       children?: React.ReactNode;
     }
-  > = (props) => <TestAppWrapper createMockConnector={createMockConnector}>{props.children}</TestAppWrapper>;
+  > = (props) => (
+    <TestAppWrapper createMockConnector={createMockConnector}>
+      {props.children}
+    </TestAppWrapper>
+  );
 
   const result = renderHook(callbackToHook, { wrapper });
   await waitForActivation(() => isActive(mockConnector));
 
   return {
     ...result,
-    rerender: result.rerender as (input: Parameters<TCallbackToHook>[0]) => void,
+    rerender: result.rerender as (
+      input: Parameters<TCallbackToHook>[0]
+    ) => void,
     mockProvider: mockProvider,
   };
 };

@@ -14,7 +14,7 @@ const func: DeployFunction = async (
 
   await blog.deployed();
   // console.log('Blog signer is:', blog.signer);
-  console.log('Deployer is:', deployer);
+  console.log('Blog Address is:', blog.address);
 
   // write this somewhere else.
   fs.writeFileSync(
