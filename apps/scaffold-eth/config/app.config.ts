@@ -33,10 +33,7 @@ invariant(
 );
 
 console.log('targetNetwork', targetNetwork);
-console.log(
-  'NEXT_PUBLIC_TARGET_NETWORK---',
-  process.env.NEXT_PUBLIC_TARGET_NETWORK
-);
+console.log('NEXT_PUBLIC_TARGET_NETWORK---', process.env.TARGET_NETWORK);
 
 export const TARGET_NETWORK_INFO: TNetworkInfo = NETWORKS[targetNetwork];
 // export const TARGET_NETWORK_INFO: TNetworkInfo = NETWORKS['localhost'];
