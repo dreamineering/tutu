@@ -4,8 +4,9 @@ import '../assets/main.css';
 import { Suspense } from 'react';
 import Head from 'next/head';
 
-import { ContractsAppContext } from '../context/contractContext';
 import { EthersAppContext } from '@drmg/shared/ui';
+
+import { ContractsAppContext } from '../context/contractContext';
 import {
   ErrorBoundary,
   ErrorFallback,
@@ -22,9 +23,9 @@ function CustomApp({ Component, pageProps }) {
           <ContractsAppContext>
             <EthersAppContext>
               <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <Suspense fallback={<div />}>
-                <Component {...pageProps} />
-              </Suspense>
+                <Suspense fallback={<div />}>
+                  <Component {...pageProps} />
+                </Suspense>
               </ErrorBoundary>
             </EthersAppContext>
           </ContractsAppContext>

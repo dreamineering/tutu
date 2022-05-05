@@ -1,9 +1,10 @@
+// CONSTANTS
 import { NETWORKS } from '../constants';
 import { LOCAL_PROVIDER } from './app.config';
+const INFURA_ID = process.env.SCAFFOLD_KEY_INFURA;
 
+// WEB3 IMPORTS
 import { ICoreOptions } from 'web3modal';
-
-const INFURA_ID = import.meta.env.VITE_KEY_INFURA;
 
 export const web3ModalConfigKeys = {
   coinbaseKey: 'custom-walletlink',
