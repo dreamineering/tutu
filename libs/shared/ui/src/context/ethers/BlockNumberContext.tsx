@@ -54,7 +54,7 @@ const reducer = (state: State = {}, payload: Payload): State => {
  *
  *
  * ##### ✏️ Notes
- * - this extensively used by eth-hooks to trigger hooks when a new block arrives
+ * - this extensively used to trigger hooks when a new block arrives
  * - uses the current provider {@link ethersProvider} from {@link useEthersContext}
  *
  * @category EthersContext

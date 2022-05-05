@@ -1,5 +1,5 @@
 /**
- * Pure functions in eth-hooks
+ * Pure functions 
  *
  * @module Helpers
  */

@@ -1,5 +1,6 @@
-import { TNetworkInfo } from 'eth-hooks/models';
 import { TNetworkNames } from '../models/TNetworkNames';
+
+import { TNetworkInfo } from '@drmg/shared/ui';
 
 const INFURA_ID = process.env.VITE_RPC_MAINNET_INFURA;
 

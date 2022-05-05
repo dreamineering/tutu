@@ -1,13 +1,14 @@
-import { getNetwork } from '@ethersproject/networks';
-import { Alert, PageHeader } from 'antd';
-import { Account } from 'eth-components/ant';
-import { useGasPrice } from 'eth-hooks';
-import { useEthersContext } from 'eth-hooks/context';
 import React, { FC, ReactElement, ReactNode } from 'react';
 
-import { FaucetHintButton } from '~~/components/common/FaucetHintButton';
-import { IScaffoldAppProviders } from '~~/components/main/hooks/useScaffoldAppProviders';
-import { getNetworkInfo } from '~~/functions';
+import { Alert, PageHeader } from 'antd';
+import { Account } from 'eth-components/ant';
+import { getNetwork } from '@ethersproject/networks';
+
+import { useGasPrice, useEthersContext } from '@drmg/shared/ui';
+
+import { FaucetHintButton } from '../common/FaucetHintButton';
+import { IScaffoldAppProviders } from './hooks/useScaffoldAppProviders';
+import { getNetworkInfo } from '../../../functions';
 
 // displays a page header
 export interface IMainPageHeaderProps {

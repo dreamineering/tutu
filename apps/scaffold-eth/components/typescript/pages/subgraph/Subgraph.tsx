@@ -5,12 +5,13 @@ import { Button, Input, Table, Typography } from 'antd';
 import { Address } from 'eth-components/ant';
 import { transactor } from 'eth-components/functions';
 import { EthComponentsSettingsContext } from 'eth-components/models';
-import { useGasPrice } from 'eth-hooks';
-import { useEthersContext } from 'eth-hooks/context';
-import { TEthersProvider } from 'eth-hooks/models';
 // import GraphiQL from 'graphiql';
 import React, { FC, ReactElement, useContext, useState } from 'react';
 import { useQuery } from 'react-query';
+
+import { useEthersContext } from '@drmg/shared/ui';
+import { TEthersProvider } from '@drmg/shared/ui';
+import { useGasPrice } from '@drmg/shared/ui';
 
 import { useAppContracts } from '~~/components/contractContext';
 

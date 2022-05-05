@@ -1,3 +1,18 @@
+.Address .ant-typography-copy {
+  transform: translateY(-14%);
+}
+
+.Address {
+  font-family: 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-weight: 300;
+}
+
+.Balance {
+  font-family: 'Roboto Mono', monospace;
+}
+
+
+
 /* :root {
   --primary: #000000;
   --primary-2: #111;

@@ -1,16 +1,18 @@
-import { parseEther } from '@ethersproject/units';
+// CONFIG
+import { FAUCET_ENABLED } from '../../../config/app.config';
+
 import { Button } from 'antd';
-import { transactor } from 'eth-components/functions';
-import { EthComponentsSettingsContext } from 'eth-components/models';
-import { useBalance } from 'eth-hooks';
-import { useEthersContext } from 'eth-hooks/context';
-import { IEthersContext } from 'eth-hooks/models';
-import { utils } from 'ethers';
 import React, { FC, useContext, useMemo, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
-import { IScaffoldAppProviders } from '~~/components/main/hooks/useScaffoldAppProviders';
-import { FAUCET_ENABLED } from '~~/config/app.config';
+import { utils } from 'ethers';
+import { parseEther } from '@ethersproject/units';
+import { transactor } from 'eth-components/functions';
+import { EthComponentsSettingsContext } from 'eth-components/models';
+
+import { useBalance, useEthersContext, IEthersContext } from '@drmg/shared/ui';
+
+import { IScaffoldAppProviders } from '../main/hooks/useScaffoldAppProviders';
 
 /**
  * Is Faucet available?

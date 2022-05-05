@@ -3,13 +3,21 @@ import { BaseContract } from '@ethersproject/contracts';
 import { useQuery } from 'react-query';
 
 import { useBlockNumberContext } from '../../context';
-import { contractKey, mergeDefaultUpdateOptions, processQueryOptions, TRequiredKeys } from '~~/functions';
+import {
+  contractKey,
+  mergeDefaultUpdateOptions,
+  processQueryOptions,
+  TRequiredKeys,
+} from '../../functions';
 import { useEthersUpdater } from '../../hooks/useEthersUpdater';
 import { THookResult, TUpdateOptions } from '../../models';
 import { keyNamespace } from '../../models/constants';
 
 const zero = BigNumber.from(0);
-const queryKey: TRequiredKeys = { namespace: keyNamespace.signer, key: 'useTokenBalance' } as const;
+const queryKey: TRequiredKeys = {
+  namespace: keyNamespace.signer,
+  key: 'useTokenBalance',
+} as const;
 
 type ERC20 = {
   balanceOf: (address: string) => Promise<BigNumber>;
@@ -34,14 +42,18 @@ export const useTokenBalance = <GContract extends BaseContract & ERC20>(
   address: string,
   options: TUpdateOptions = mergeDefaultUpdateOptions()
 ): THookResult<BigNumber> => {
-  const keys = [{ ...queryKey, ...contractKey(contract) }, { address }] as const;
+  const keys = [
+    { ...queryKey, ...contractKey(contract) },
+    { address },
+  ] as const;
   const { data, refetch, status } = useQuery(
     keys,
     async (keys): Promise<BigNumber> => {
       const { address } = keys.queryKey[1];
 
       if (contract?.provider && address) {
-        const newBalance: BigNumber = (await contract?.balanceOf?.(address)) ?? zero;
+        const newBalance: BigNumber =
+          (await contract?.balanceOf?.(address)) ?? zero;
         return newBalance;
       } else {
         return zero;
@@ -49,7 +61,8 @@ export const useTokenBalance = <GContract extends BaseContract & ERC20>(
     },
     {
       ...processQueryOptions<BigNumber>(options),
-      isDataEqual: (oldResult, newResult) => oldResult?._hex === newResult?._hex,
+      isDataEqual: (oldResult, newResult) =>
+        oldResult?._hex === newResult?._hex,
     }
   );
 

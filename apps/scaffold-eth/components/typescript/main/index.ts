@@ -1,4 +1,4 @@
-import { lazier } from 'eth-hooks/helpers';
+import { lazier } from '@drmg/shared/ui';
 
 // use lazy/lazier for react lazy loading
 

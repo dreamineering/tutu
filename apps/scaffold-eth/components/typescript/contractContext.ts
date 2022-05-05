@@ -1,5 +1,5 @@
-import { contractsContextFactory } from 'eth-hooks/context';
-import { TTypedContract } from 'eth-hooks/models';
+import { contractsContextFactory } from '@drmg/shared/ui';
+import { TTypedContract } from '@drmg/shared/ui';
 
 import {
   appContractsConfig,

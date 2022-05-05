@@ -1,9 +1,13 @@
-import { Switch } from 'antd';
-import { useEthersContext } from 'eth-hooks/context';
 import React, { FC, useEffect, useState } from 'react';
+
+import { Switch } from 'antd';
 import { useThemeSwitcher } from 'react-css-theme-switcher';
 
+import { useEthersContext } from '@drmg/shared/ui';
+
+
 const initialTheme = window.localStorage.getItem('theme') ?? 'light';
+
 export const ThemeSwitcher: FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(initialTheme === 'dark');
   const { switcher, currentTheme, status, themes } = useThemeSwitcher();

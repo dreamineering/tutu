@@ -116,7 +116,7 @@ export const getWeb3ModalConfig = async (): Promise<Partial<ICoreOptions>> => {
   try {
     if (LOCAL_PROVIDER) {
       const { ConnectToStaticJsonRpcProvider } = await import(
-        'eth-hooks/context'
+       '@drmg/shared/ui'
       );
       const { StaticJsonRpcProvider } = await import(
         '@ethersproject/providers'

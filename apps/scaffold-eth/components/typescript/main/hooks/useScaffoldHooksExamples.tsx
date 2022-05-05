@@ -1,6 +1,10 @@
 import { NETWORKS } from '@scaffold-eth/common/src/constants';
+
+import { useContext, useEffect } from 'react';
+import { ethers } from 'ethers';
 import { transactor } from 'eth-components/functions';
 import { EthComponentsSettingsContext } from 'eth-components/models';
+
 import {
   useBalance,
   useBlockNumber,
@@ -8,14 +12,14 @@ import {
   useEthersAdaptorFromProviderOrSigners,
   useGasPrice,
   useSignerAddress,
-} from 'eth-hooks';
-import { useEthersContext } from 'eth-hooks/context';
-import { mergeDefaultUpdateOptions } from 'eth-hooks/functions';
-import { ethers } from 'ethers';
-import { useContext, useEffect } from 'react';
+} from '@drmg/shared/ui';
+
+import { useEthersContext } from '@drmg/shared/ui';
+import { mergeDefaultUpdateOptions } '@drmg/shared/ui';
 
 import { useAppContracts } from '~~/components/contractContext';
 import { IScaffoldAppProviders } from '~~/components/main/hooks/useScaffoldAppProviders';
+
 import { DEBUG } from '~~/config/app.config';
 import { getNetworkInfo } from '~~/functions';
 
@@ -117,25 +121,6 @@ export const useScaffoldHooksExamples = (
   // you can use this for read write transactions
   // check out faucetHintButton.tsx for an example.
   const tx = transactor(ethComponentsSettings, ethersContext?.signer, gasPrice);
-
-  // here is another example of using tx
-
-  // useEffect(() => {
-  //   // only does it on local host and once cuz of the useeffect for safety
-  //   if (tx && ethersContext?.chainId == NETWORKS.localhost.chainId) {
-  //     const someaddress = ethersContext?.account;
-  //     tx({
-  //       to: someaddress,
-  //       value: parseEther('0.01').toHexString(),
-  //     });
-  //   }
-  // }, []);
-
-  // ---------------------
-  // 🏭 check out eth-hooks!!!
-  // ---------------------
-  // docs: https://scaffold-eth.github.io/eth-hooks/
-  // npm: https://www.npmjs.com/package/eth-hooks
 
   useEffect(() => {
     if (

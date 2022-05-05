@@ -9,6 +9,8 @@ import { TNetworkInfo, TEthersProvider } from '@drmg/shared/ui';
 
 export const DEBUG = true;
 
+console.log('!!!APP DEV!!!', process.env.APP_DEV)
+
 // https://www.npmjs.com/package/ts-invariant
 // invariant.log('MODE', process.env.MODE, process.env.SCAFFOLD_APP_DEV);
 
@@ -32,8 +34,8 @@ invariant(
   `Invalid target network: ${targetNetwork}`
 );
 
-console.log('targetNetwork', targetNetwork);
-console.log('NEXT_PUBLIC_TARGET_NETWORK---', process.env.TARGET_NETWORK);
+// console.log('targetNetwork', targetNetwork);
+// console.log('---TARGET_NETWORK---', process.env.TARGET_NETWORK);
 
 export const TARGET_NETWORK_INFO: TNetworkInfo = NETWORKS[targetNetwork];
 // export const TARGET_NETWORK_INFO: TNetworkInfo = NETWORKS['localhost'];
@@ -47,13 +49,12 @@ if (DEBUG) console.log(`📡 Connecting to ${TARGET_NETWORK_INFO.name}`);
  * localhost faucet enabled
  */
 export const FAUCET_ENABLED =
-  process.env.SCAFFOLD_APP_FAUCET_ALLOWED === 'true' && process.env.DEV;
+  process.env.FAUCET_ENABLED === 'true' && process.env.APP_DEV;
 /**
  * Use burner wallet as fallback
  */
 export const BURNER_FALLBACK_ENABLED =
-  process.env.SCAFFOLD_APP_BURNER_FALLBACK_ALLOWED === 'true' &&
-  process.env.SCAFFOLD_APP_DEV;
+  process.env.BURNER_FALLBACK_ALLOWED === 'true' && process.env.APP_DEV;
 /**
  * Connect to burner on first load if there are no cached providers
  */

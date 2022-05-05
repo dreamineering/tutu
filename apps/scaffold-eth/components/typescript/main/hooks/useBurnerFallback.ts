@@ -1,8 +1,8 @@
 import { NETWORKS } from '@scaffold-eth/common/src/constants';
-import { useBurnerSigner } from 'eth-hooks';
-import { useEthersContext } from 'eth-hooks/context';
 import { useEffect } from 'react';
 
+import { useEthersContext } from '@drmg/shared/ui';
+import { useBurnerSigner } from '@drmg/shared/ui';
 import { IScaffoldAppProviders } from '~~/components/main/hooks/useScaffoldAppProviders';
 
 export const useBurnerFallback = (

@@ -1,6 +1,11 @@
 // IMPORT and SET CONSTANTS
 import { NETWORKS, ALCHEMY_KEY } from '../constants';
-import { BURNER_FALLBACK_ENABLED, MAINNET_PROVIDER } from '../config/app.config';
+// import { NETWORKS, ALCHEMY_KEY } from '@drmg/shared/data-access/scaffold-eth';
+
+// import {
+//   BURNER_FALLBACK_ENABLED,
+//   MAINNET_PROVIDER,
+// } from '../config/app.config';
 import externalContracts from '../contracts/external_contracts';
 import deployedContracts from '../contracts/hardhat_contracts.json';
 const initialNetwork = NETWORKS.localhost;
@@ -15,12 +20,11 @@ import { useCallback, useEffect, useState } from 'react';
 // WEB3
 import ethers from 'ethers';
 
-// const useBalance = dynamic(() => import("eth-hooks"));
-
 import {
   useBalance, // good
   useContractLoader,
   useContractReader,
+  useDexEthPrice,
   // useGasPrice,
   // useOnBlock,
   // useUserProviderAndSigner,
@@ -32,10 +36,7 @@ import {
 import { useScaffoldProviders as useScaffoldAppProviders } from '../components/typescript/main/hooks/useScaffoldAppProviders';
 
 import {
-  MainPageFooter,
-  MainPageHeader,
-  createPagesAndTabs,
-  TContractPageList,
+  MainPageFooter
 } from '../components/typescript/main';
 
 import { useStaticJsonRPC } from '../hooks';
@@ -86,13 +87,18 @@ export function New() {
   const yourMainnetBalance = useBalance(mainnetProvider, address);
   console.log('MAINNET_BALANCE', yourMainnetBalance);
 
-// app hooks
+  // app hooks
   // -----------------------------
   // Providers, signers & wallets
   // -----------------------------
   // 🛰 providers
   // see useLoadProviders.ts for everything to do with loading the right providers
   const scaffoldAppProviders = useScaffoldAppProviders();
+
+  const [ethPrice] = useDexEthPrice(
+    scaffoldAppProviders.mainnetAdaptor?.provider,
+    scaffoldAppProviders.targetNetwork
+  );
 
   return (
     <div className="text-lg">
@@ -109,6 +115,10 @@ export function New() {
         </span>
         Support
       </Button>
+      <MainPageFooter
+        scaffoldAppProviders={scaffoldAppProviders}
+        price={ethPrice}
+      />
     </div>
   );
 }

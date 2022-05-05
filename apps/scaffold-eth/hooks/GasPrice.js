@@ -1,6 +1,7 @@
 import axios from "axios";
-import { usePoller } from "eth-hooks";
 import { useState } from "react";
+
+import { usePoller } from '@drmg/shared/ui';
 
 export default function useGasPrice(targetNetwork, speed) {
   const [gasPrice, setGasPrice] = useState();
