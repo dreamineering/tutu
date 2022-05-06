@@ -7,8 +7,9 @@ import { useDebounce } from 'use-debounce';
 
 import { utils } from 'ethers';
 import { parseEther } from '@ethersproject/units';
-import { transactor } from 'eth-components/functions';
-import { EthComponentsSettingsContext } from 'eth-components/models';
+
+import { transactor } from '../../../functions';
+import { EthComponentsSettingsContext } from '../main/eth/models';
 
 import { useBalance, useEthersContext, IEthersContext } from '@drmg/shared/ui';
 

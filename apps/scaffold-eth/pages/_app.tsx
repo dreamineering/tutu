@@ -32,9 +32,9 @@ function CustomApp({ Component, pageProps }) {
             <EthersAppContext>
               <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <ThemeSwitcherProvider themeMap={themes} defaultTheme={'light'}>
-                <Suspense fallback={<div />}>
-                  <Component {...pageProps} />
-                </Suspense>
+                  <Suspense fallback={<div />}>
+                    <Component {...pageProps} />
+                  </Suspense>
                 </ThemeSwitcherProvider>
               </ErrorBoundary>
             </EthersAppContext>

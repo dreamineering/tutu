@@ -1,10 +1,10 @@
 import React, { FC, ReactElement, ReactNode } from 'react';
 
 import { Alert, PageHeader } from 'antd';
-import { Account } from 'eth-components/ant';
 import { getNetwork } from '@ethersproject/networks';
 
 import { useGasPrice, useEthersContext } from '@drmg/shared/ui';
+import { Account } from './eth';
 
 import { FaucetHintButton } from '../common/FaucetHintButton';
 import { IScaffoldAppProviders } from './hooks/useScaffoldAppProviders';

@@ -35,9 +35,7 @@ import {
 
 import { useScaffoldProviders as useScaffoldAppProviders } from '../components/typescript/main/hooks/useScaffoldAppProviders';
 
-import {
-  MainPageFooter
-} from '../components/typescript/main';
+import { MainPageHeader, MainPageFooter } from '../components/typescript/main';
 
 import { useStaticJsonRPC } from '../hooks';
 
@@ -64,10 +62,10 @@ export function New() {
   console.log('EXTERNAL_CONTRACTS', externalContracts);
   console.log('DEPLOYED_CONTRACTS', deployedContracts);
 
-  const contractConfig = {
-    deployedContracts: deployedContracts || {},
-    externalContracts: externalContracts || {},
-  };
+  // const contractConfig = {
+  //   deployedContracts: deployedContracts || {},
+  //   externalContracts: externalContracts || {},
+  // };
 
   // const yourContract = useAppContracts('YourContract', ethersContext.chainId);
 
@@ -102,6 +100,10 @@ export function New() {
 
   return (
     <div className="text-lg">
+      <MainPageHeader
+        scaffoldAppProviders={scaffoldAppProviders}
+        price={ethPrice}
+      />
       <div>new</div>
       <Button
         onClick={() => {
