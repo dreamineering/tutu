@@ -1,12 +1,12 @@
 # Tutu
 
-Use [Nx](https://nx.dev) to build apps from shared libraries to create foundatiom for [evolving Web3](https://mm.dreamineering.com/docs/projects/apps/monorepo-apps/) model for creating value from ideas at the optimal rate.
+Use [monorepo](https://mm.dreamineering.com/docs/projects/apps/monorepo-apps/) architecture to build multiple apps from shared libraries to create a foundational [Web3 Startup Model](https://mm.dreamineering.com/docs/blockchain/startups/playbook) that enables the creation of value from ideas with optimal flow.
 
-1. Understand: Pattern Recognition (Good from Bad and why)
-2. Evolve: collective Decision Making to identify Optimal Strategy
-3. Practice: ability to co-ordinate strengths to maximise value creation
-
-[Project Documentation](https://mm.dreamineering.com/docs/projects/apps/monorepo-apps/)
+1. [Understand:](https://mm.dreamineering.com/docs/humans/skills/meta-learning/) [Good Pattterns](https://mm.dreamineering.com/docs/engineering/software/smart-contracts/patterns/) from Bad and why?
+2. [Review:](https://mm.dreamineering.com/docs/flow/act/) with spaced repetition linked to linked thinking documentation to accelerate actionable knowledge.
+3. [Practice:](https://mm.dreamineering.com/docs/engineering/software/developer-roadmaps) follow the path to form good habits
+4. [Coach:](https://mm.dreamineering.com/docs/humans/skills/leadership/coach) create an ecosystem of coaches that help others levelup with [flow](/docs/flow)
+5. [Evolve:](https://mm.dreamineering.com/docs/flow/decide/) collective wisdom through decision making processed used for making future bets
 
 ## Approach
 
@@ -18,20 +18,27 @@ Innovate at the edges then pull proven patterns into the core.
 
 ## Plan
 
-Use the conversion of Scaffold-Eth TypeScript to working with NX to understand the fundamental building blocks of the ethereum ecosystem better.
-
-- [ ] Prototype in a scaffold-eth app that has the kitchen sink of features
-- [ ] Use Storybook to create a visual reference of components and their functionality
-- [ ] Understand/document jobs of core depenedencies
+Help to drive standardisation of naming conventions, and best practices to help conceptual and fundamental leaps forward in the world of multi-chain development.
 
 ### Web3 App Fundamentals
 
-Use a common layer of UI components and reference functions to evolve ideas for building core types of Web3 app that can also be used to onboard new developers more efficiently.
+Create a common library to evolve ideas for building core types of Web3 app that can also be used to onboard new developers more efficiently.
 
 - [ ] Create a DAO with Multi-Sig to run operations
 - [ ] Create a DeFi operations project to leverage capital
 - [ ] Create a base marketing project to sell ideas
 - [ ] Use software to create [real world](https://mm.dreamineering.com/docs/projects/apps/) value
+
+### Components
+
+Use [CDD](https://mm.dreamineering.com/docs/engineering/software/architecture/component-driven-development) to evolve core building blocks to rapidly evolve Web3 apps.
+
+Use the conversion of Scaffold-Eth TypeScript to working with NX to understand the fundamental building blocks of the ethereum ecosystem better.
+
+- [ ] Create an app to replicate scaffold-eth-typescripts **kitchen sink** of features
+- [ ] Understand/document jobs of core depenedencies
+- [ ] Use Storybook to create a common library with visual reference of standard components and variant use cases
+- [ ] Investigate archecture of headless (any CSS lib) and and bottomless (any chain) UI components
 
 ### Backend
 
