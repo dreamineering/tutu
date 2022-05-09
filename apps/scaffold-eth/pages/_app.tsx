@@ -18,7 +18,7 @@ import { ContractsAppContext } from '../context/contractContext';
 import {
   ErrorBoundary,
   ErrorFallback,
-} from '../components/typescript/common/ErrorFallback';
+} from '../components/local/common/ErrorFallback';
 
 function CustomApp({ Component, pageProps }) {
   return (

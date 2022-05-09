@@ -1,8 +1,8 @@
-import { TNetworkNames } from '../models/TNetworkNames';
+import { TNetworkNames, TNetworkInfo } from '../models';
 
-import { TNetworkInfo } from '@drmg/shared/ui';
+// import { TNetworkInfo } from '@drmg/shared/ui';
 
-const INFURA_ID = process.env.VITE_RPC_MAINNET_INFURA;
+const INFURA_ID = process.env['RPC_MAINNET_INFURA'];
 
 let hostname = 'localhost';
 if (typeof window !== 'undefined') {

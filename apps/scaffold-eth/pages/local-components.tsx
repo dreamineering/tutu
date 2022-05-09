@@ -33,9 +33,9 @@ import {
   //
 } from '@drmg/shared/ui';
 
-import { useScaffoldProviders as useScaffoldAppProviders } from '../components/typescript/main/hooks/useScaffoldAppProviders';
+import { useScaffoldProviders as useScaffoldAppProviders } from '../components/local/main/hooks/useScaffoldAppProviders';
 
-import { MainPageHeader, MainPageFooter } from '../components/typescript/main';
+import { MainPageHeader, MainPageFooter } from '../components/local/main';
 
 import { useStaticJsonRPC } from '../hooks';
 

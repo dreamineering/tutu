@@ -16,7 +16,7 @@ import { parseProviderOrSigner } from '@drmg/shared/ui';
 import {
   checkBlocknativeAppId,
   IEthComponentsSettings,
-} from '../components/eth/models';
+} from '../components/typescript/main/eth/models';
 
 const callbacks: Record<string, any> = {};
 const DEBUG = true;
