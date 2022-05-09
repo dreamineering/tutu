@@ -36,9 +36,9 @@ import {
 // local hooks
 import { useStaticJsonRPC } from '../hooks';
 
-import { useScaffoldProviders as useScaffoldAppProviders } from '../components/local/main/hooks/useScaffoldAppProviders';
+import { useScaffoldProviders as useScaffoldAppProviders } from '../components/main/hooks/useScaffoldAppProviders';
 
-import { MainPageHeader, MainPageFooter } from '../components/local/main';
+import { MainPageHeader, MainPageFooter } from '../components/main';
 
 const providers = [
   'https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406',

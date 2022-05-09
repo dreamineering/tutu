@@ -1,7 +1,7 @@
 // IMPORT and SET CONSTANTS
 // import { NETWORKS, ALCHEMY_KEY } from '../constants';
 // import { NETWORKS, ALCHEMY_KEY } from '@drmg/shared/data-access/scaffold-eth';
-import { useScaffoldProviders as useScaffoldAppProviders } from '../components/local/main/hooks/useScaffoldAppProviders';
+import { useScaffoldProviders as useScaffoldAppProviders } from '../components/main/hooks/useScaffoldAppProviders';
 
 // local shared function
 import { getNetworkInfo } from '../functions/getNetworkInfo';
@@ -13,7 +13,7 @@ import { Account, Faucet, GasGauge, Wallet } from '@drmg/shared/ui'; // componen
 import {
   FaucetHintButton,
   getFaucetAvailable,
-} from '../components/local/common/FaucetHintButton';
+} from '../components/common/FaucetHintButton';
 
 export function EthComponents() {
   const ethersContext = useEthersContext();
