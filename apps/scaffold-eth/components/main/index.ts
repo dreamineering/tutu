@@ -16,5 +16,3 @@ export const MainPageHeader = lazier(
   () => import('./MainPageHeader'),
   'MainPageHeader'
 );
-
-export * from './createPagesAndTabs';

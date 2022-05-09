@@ -2,9 +2,9 @@ import { contractsContextFactory } from '@drmg/shared/ui';
 import { TTypedContract } from '@drmg/shared/ui';
 
 import {
-  appContractsConfig,
+  // appContractsConfig,
   TAppConnectorList,
-} from '~~/config/appContracts.config';
+} from '../config/appContracts.config';
 
 /**
  * This file initalises the contractContextFactory and exports the types
