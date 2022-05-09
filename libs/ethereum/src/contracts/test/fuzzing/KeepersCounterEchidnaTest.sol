@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-import "../../KeepersCounter.sol";
+import '../../chainlink/KeepersCounter.sol';
 
 contract KeepersCounterEchidnaTest is KeepersCounter {
   constructor() KeepersCounter(8 days) {}

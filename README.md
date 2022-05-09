@@ -1,6 +1,6 @@
 # Tutu
 
-Use [monorepo](https://mm.dreamineering.com/docs/projects/apps/monorepo-apps/) architecture to build multiple apps from shared libraries to create a foundational [Web3 Startup Model](https://mm.dreamineering.com/docs/blockchain/startups/playbook) that enables the creation of value from ideas with optimal flow.
+Use [monorepo](https://mm.dreamineering.com/docs/projects/monorepo-apps/) architecture to build multiple apps from shared libraries to create a foundational [Web3 Startup Model](https://mm.dreamineering.com/docs/blockchain/startups/playbook) that enables the creation of value from ideas with optimal flow.
 
 1. [Understand:](https://mm.dreamineering.com/docs/humans/skills/meta-learning/) [Good Pattterns](https://mm.dreamineering.com/docs/engineering/software/smart-contracts/patterns/) from Bad and why?
 2. [Review:](https://mm.dreamineering.com/docs/flow/act/) with spaced repetition linked to linked thinking documentation to accelerate actionable knowledge.
@@ -27,7 +27,7 @@ Create a common library to evolve ideas for building core types of Web3 app that
 - [ ] Create a DAO with Multi-Sig to run operations
 - [ ] Create a DeFi operations project to leverage capital
 - [ ] Create a base marketing project to sell ideas
-- [ ] Use software to create [real world](https://mm.dreamineering.com/docs/projects/apps/) value
+- [ ] Use software to create [real world](https://mm.dreamineering.com/docs/projects) value
 
 ### Components
 
@@ -44,6 +44,7 @@ Use the conversion of Scaffold-Eth TypeScript to working with NX to understand t
 
 - [ ] Ethereum combine build process of chainlink and scaffold-eth
 - [ ] Run subgraphs from NX commands
+- [ ] Add [Optimism](https://mm.dreamineering.com/docs/humans/skills/leadership/optimism)
 - [ ] [Cosmos](https://cosmos.network/)
 - [ ] Etc
 
