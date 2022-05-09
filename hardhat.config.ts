@@ -14,8 +14,6 @@ import 'solidity-coverage';
 import '@appliedblockchain/chainlink-plugins-fund-link';
 
 // import '@tenderly/hardhat-tenderly';
-// import 'hardhat-deploy';
-// import 'solidity-coverage';
 // import 'hardhat-watcher';                         // missing
 // import '@primitivefi/hardhat-dodoc';              // missing
 // import 'hardhat-tracer';                          // missing
@@ -35,7 +33,7 @@ import { getMnemonic } from './libs/ethereum/src/tasks/functions/mnemonic';
 dotenv.config();
 
 // key set with Windows $env:WALLET_PK = '0x...'
-console.log('Hi matt', process.env.WALLET_PK);
+console.log('WALLET_PK_FOR_POLYGON_DEPLOY', process.env.WALLET_PK);
 
 //#region   scaffold eth
 
@@ -124,7 +122,7 @@ const config: HardhatUserConfig = {
     deployments: './generated/deployments',
   },
   typechain: {
-    outDir: './generated/contract-types',
+    outDir: './generated/typechain', // NOTE: scaffold-eth has this as conttract-types
     target: 'ethers-v5',
   },
 

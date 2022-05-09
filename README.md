@@ -48,3 +48,18 @@ Use the conversion of Scaffold-Eth TypeScript to working with NX to understand t
 - [ ] Etc
 
 Evolve [roadmaps](https://mm.dreamineering.com/docs/engineering/software/developer-roadmaps) to create more [engineers](https://mm.dreamineering.com/docs/engineering/).
+
+### Getting Started
+
+Workaround: after clone and yarn install in hardhat.config.ts comment out **tasks** import as these are dependent on generated **typechain** files.
+
+```ts
+// Tasks
+import './libs/ethereum/src/tasks';
+```
+
+Generate **typechain** files then uncomment **tasks** import.
+
+```bash
+nx run ethereum:hh-typechain
+```

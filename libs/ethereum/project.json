@@ -27,6 +27,12 @@
         "command": "yarn hardhat clean"
       }
     },
+    "hh-typechain": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn hardhat typechain"
+      }
+    },
     "hh-compile": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
