@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Blockies from 'react-blockies';
 
 // provides a blockie image for the address using "react-blockies" library
 
-interface IBlockieProps {
+export interface IBlockieProps {
   address: string;
   scale: number;
 }
