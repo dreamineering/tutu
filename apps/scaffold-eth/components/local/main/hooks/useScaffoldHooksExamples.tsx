@@ -1,9 +1,10 @@
-import { NETWORKS } from '@scaffold-eth/common/src/constants';
+import { NETWORKS } from '@drmg/shared/data-access/scaffold-eth';
+import { DEBUG } from '../../../../config/app.config';
 
 import { useContext, useEffect } from 'react';
 import { ethers } from 'ethers';
-import { transactor } from 'eth-components/functions';
-import { EthComponentsSettingsContext } from 'eth-components/models';
+import { transactor } from '@drmg/shared/ui'; // functions
+import { EthComponentsSettingsContext } from '@drmg/shared/ui'; // models
 
 import {
   useBalance,
@@ -15,13 +16,11 @@ import {
 } from '@drmg/shared/ui';
 
 import { useEthersContext } from '@drmg/shared/ui';
-import { mergeDefaultUpdateOptions } '@drmg/shared/ui';
+import { mergeDefaultUpdateOptions } from '@drmg/shared/ui';
 
-import { useAppContracts } from '~~/components/contractContext';
-import { IScaffoldAppProviders } from '~~/components/main/hooks/useScaffoldAppProviders';
-
-import { DEBUG } from '~~/config/app.config';
-import { getNetworkInfo } from '~~/functions';
+import { getNetworkInfo } from '../../../../functions';
+import { useAppContracts } from '../../../../components/local/contractContext';
+import { IScaffoldAppProviders } from './useScaffoldAppProviders';
 
 /**
  * Logs to console current app state.  Shows you examples on how to use hooks!

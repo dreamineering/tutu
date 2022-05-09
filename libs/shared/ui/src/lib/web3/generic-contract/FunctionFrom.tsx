@@ -19,7 +19,7 @@ import { useEthersContext } from '@drmg/shared/ui';
 
 import { tryToDisplay } from './displayUtils';
 import { EthComponentsSettingsContext } from '../models';
-import { transactor } from '../../../../../functions';
+import { transactor } from '../functions';
 
 const getFunctionInputKey = (
   functionInfo: FunctionFragment,

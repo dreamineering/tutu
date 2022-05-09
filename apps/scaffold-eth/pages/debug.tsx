@@ -20,6 +20,7 @@ import { useCallback, useEffect, useState } from 'react';
 // WEB3
 import ethers from 'ethers';
 
+// shared library hooks
 import {
   useBalance, // good
   useContractLoader,
@@ -31,13 +32,13 @@ import {
   //useEventListener  v4
   //  useDexEthPrice
   //
-} from '@drmg/shared/ui';
+} from '@drmg/shared/ui'; // hooks
+// local hooks
+import { useStaticJsonRPC } from '../hooks';
 
 import { useScaffoldProviders as useScaffoldAppProviders } from '../components/local/main/hooks/useScaffoldAppProviders';
 
 import { MainPageHeader, MainPageFooter } from '../components/local/main';
-
-import { useStaticJsonRPC } from '../hooks';
 
 const providers = [
   'https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406',

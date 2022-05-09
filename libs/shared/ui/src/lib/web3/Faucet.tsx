@@ -11,7 +11,7 @@ import { Wallet } from '.';
 import { useResolveEnsAddress } from '@drmg/shared/ui';
 import { TEthersAdaptor } from '@drmg/shared/ui';
 
-import { transactor } from '../../../../functions';
+import { transactor } from './functions';
 import { EthComponentsSettingsContext } from './models';
 
 // improved a bit by converting address to ens if it exists
@@ -45,8 +45,13 @@ export const Faucet: FC<IFaucetProps> = (props) => {
   const ethComponentsSettings = useContext(EthComponentsSettingsContext);
 
   let blockie;
-  if (props.faucetAddress && typeof props.faucetAddress.toLowerCase === 'function') {
-    blockie = <Blockies seed={props.faucetAddress.toLowerCase()} size={8} scale={4} />;
+  if (
+    props.faucetAddress &&
+    typeof props.faucetAddress.toLowerCase === 'function'
+  ) {
+    blockie = (
+      <Blockies seed={props.faucetAddress.toLowerCase()} size={8} scale={4} />
+    );
   } else {
     blockie = <div />;
   }
@@ -71,8 +76,13 @@ export const Faucet: FC<IFaucetProps> = (props) => {
     }
   }, []);
 
-  const [resolvedAddress] = useResolveEnsAddress(props.mainnetAdaptor?.provider, recipient ?? '');
-  const toAddress = ethers.utils.isAddress(recipient) ? recipient : resolvedAddress;
+  const [resolvedAddress] = useResolveEnsAddress(
+    props.mainnetAdaptor?.provider,
+    recipient ?? ''
+  );
+  const toAddress = ethers.utils.isAddress(recipient)
+    ? recipient
+    : resolvedAddress;
   const localSigner = props.localAdaptor?.signer;
 
   return (
@@ -91,7 +101,11 @@ export const Faucet: FC<IFaucetProps> = (props) => {
           <Tooltip title="Faucet: Send local ether to an address.">
             <Button
               onClick={(): void => {
-                if (localSigner && ethComponentsSettings && ethers.utils.isAddress(toAddress ?? '')) {
+                if (
+                  localSigner &&
+                  ethComponentsSettings &&
+                  ethers.utils.isAddress(toAddress ?? '')
+                ) {
                   const tx = transactor(ethComponentsSettings, localSigner);
 
                   if (tx && !!recipient) {

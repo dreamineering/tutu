@@ -22,8 +22,6 @@ import {
   TNetworkInfo,
 } from '@drmg/shared/ui';
 
-
-
 export interface IScaffoldAppProviders {
   currentProvider: TEthersProvider | undefined;
   targetNetwork: TNetworkInfo;

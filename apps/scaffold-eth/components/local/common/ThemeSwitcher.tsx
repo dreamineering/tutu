@@ -5,7 +5,6 @@ import { useThemeSwitcher } from 'react-css-theme-switcher';
 
 import { useEthersContext } from '@drmg/shared/ui';
 
-
 // const initialTheme = window.localStorage.getItem('theme') ?? 'light';
 const initialTheme = 'dark' ?? 'light';
 

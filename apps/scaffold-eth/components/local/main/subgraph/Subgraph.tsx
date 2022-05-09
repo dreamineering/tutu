@@ -1,22 +1,19 @@
 import { Button, Input, Table, Typography } from 'antd';
 
 // import 'graphiql/graphiql.min.css';
-
-import { Address } from 'eth-components/ant';
-import { transactor } from 'eth-components/functions';
-import { EthComponentsSettingsContext } from 'eth-components/models';
-// import GraphiQL from 'graphiql';
 import React, { FC, ReactElement, useContext, useState } from 'react';
 import { useQuery } from 'react-query';
+// import GraphiQL from 'graphiql';
 
-import { useEthersContext } from '@drmg/shared/ui';
 import { TEthersProvider } from '@drmg/shared/ui';
-import { useGasPrice } from '@drmg/shared/ui';
+import { transactor } from '@drmg/shared/ui'; // function
+import { EthComponentsSettingsContext } from '@drmg/shared/ui'; // model
+import { useEthersContext, useGasPrice } from '@drmg/shared/ui'; // hooks
+import { Address } from '@drmg/shared/ui';
 
-import { useAppContracts } from '~~/components/contractContext';
+import { useAppContracts } from '../../../../components/local/contractContext';
 
 // const GraphiQL = lazy(() => import('graphiql'));
-
 const highlight: React.CSSProperties = {
   marginLeft: 4,
   marginRight: 8,

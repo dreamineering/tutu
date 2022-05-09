@@ -8,9 +8,9 @@ import { useDebounce } from 'use-debounce';
 import { utils } from 'ethers';
 import { parseEther } from '@ethersproject/units';
 
-import { transactor } from '../../../functions';
-import { EthComponentsSettingsContext } from '../../eth/models';
-
+// import { EthComponentsSettingsContext } from '../../eth/models';
+import { transactor } from '@drmg/shared/ui'; // function
+import { EthComponentsSettingsContext } from '@drmg/shared/ui';
 import { useBalance, useEthersContext, IEthersContext } from '@drmg/shared/ui';
 
 import { IScaffoldAppProviders } from '../main/hooks/useScaffoldAppProviders';

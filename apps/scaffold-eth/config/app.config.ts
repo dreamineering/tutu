@@ -9,7 +9,7 @@ import { TNetworkInfo, TEthersProvider } from '@drmg/shared/ui';
 
 export const DEBUG = true;
 
-console.log('!!!APP DEV!!!', process.env.APP_DEV)
+console.log('!!!APP DEV!!!', process.env.APP_DEV);
 
 // https://www.npmjs.com/package/ts-invariant
 // invariant.log('MODE', process.env.MODE, process.env.SCAFFOLD_APP_DEV);
@@ -48,8 +48,9 @@ if (DEBUG) console.log(`📡 Connecting to ${TARGET_NETWORK_INFO.name}`);
 /**
  * localhost faucet enabled
  */
-export const FAUCET_ENABLED =
-  process.env.FAUCET_ENABLED === 'true' && process.env.APP_DEV;
+export const FAUCET_ENABLED = true;
+
+//   process.env.FAUCET_ENABLED === true && process.env.APP_DEV;
 /**
  * Use burner wallet as fallback
  */

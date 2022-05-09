@@ -13,10 +13,7 @@ import { ArgsProps } from 'antd/lib/notification';
 import { TEthersSigner } from '@drmg/shared/ui';
 import { parseProviderOrSigner } from '@drmg/shared/ui';
 
-import {
-  checkBlocknativeAppId,
-  IEthComponentsSettings,
-} from '../components/typescript/main/eth/models';
+import { checkBlocknativeAppId, IEthComponentsSettings } from '../models';
 
 const callbacks: Record<string, any> = {};
 const DEBUG = true;

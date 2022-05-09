@@ -17,10 +17,10 @@ import {
 import { useBurnerSigner, useSignerAddress } from '@drmg/shared/ui';
 import { TEthersSigner } from '@drmg/shared/ui';
 
-import { Address, AddressInput, Balance, EtherInput } from '.';
-
-import { transactor } from '../../../../functions';
 import { EthComponentsSettingsContext } from './models';
+import { transactor } from './functions';
+
+import { Address, AddressInput, Balance, EtherInput } from '.';
 
 const { Text, Paragraph } = Typography;
 

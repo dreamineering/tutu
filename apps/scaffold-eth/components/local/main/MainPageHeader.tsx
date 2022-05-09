@@ -4,11 +4,12 @@ import { Alert, PageHeader } from 'antd';
 import { getNetwork } from '@ethersproject/networks';
 
 import { useGasPrice, useEthersContext } from '@drmg/shared/ui';
-import { Account } from '../../eth';
+// import { Account } from '../../eth';
+import { Account } from '@drmg/shared/ui';
 
-import { FaucetHintButton } from '../common/FaucetHintButton';
 import { IScaffoldAppProviders } from './hooks/useScaffoldAppProviders';
 import { getNetworkInfo } from '../../../functions';
+import { FaucetHintButton } from '../common/FaucetHintButton';
 
 // displays a page header
 export interface IMainPageHeaderProps {

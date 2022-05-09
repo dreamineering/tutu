@@ -4,13 +4,14 @@ import { NETWORKS } from '@drmg/shared/data-access/scaffold-eth';
 import React, { FC } from 'react';
 import { Row, Col, Button } from 'antd';
 
-import { useEthersContext } from '@drmg/shared/ui';
-import { Faucet, GasGauge } from '../../eth';
+import { useEthersContext } from '@drmg/shared/ui'; // context
+import { Faucet, GasGauge } from '@drmg/shared/ui'; // faucets
+// import { Faucet, GasGauge } from '../../eth';
 
 import { Ramp, ThemeSwitcher } from '../common';
-import { getFaucetAvailable } from '../common/FaucetHintButton';
 import { IScaffoldAppProviders } from './hooks/useScaffoldAppProviders';
 import { getNetworkInfo } from '../../../functions/getNetworkInfo';
+import { getFaucetAvailable } from '../common/FaucetHintButton';
 
 export interface IMainPageFooterProps {
   scaffoldAppProviders: IScaffoldAppProviders;
