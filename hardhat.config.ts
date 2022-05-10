@@ -186,6 +186,22 @@ const config: HardhatUserConfig = {
     //   saveDeployments: true,
     //   chainId: 137,
     // },
+
+    // for mainnet
+    // 'optimism': {
+    //   url: "https://mainnet.optimism.io",
+    //   accounts: [privateKey1, privateKey2, ...]
+    // },
+    // // for testnet
+    // 'optimism-kovan': {
+    //   url: "https://kovan.optimism.io",
+    //   accounts: [privateKey1, privateKey2, ...]
+    // },
+    // // for the local dev environment
+    // 'optimism-local': {
+    //   url: "http://localhost:8545",
+    //   accounts: [privateKey1, privateKey2, ...]
+    // },
   },
   etherscan: {
     // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>

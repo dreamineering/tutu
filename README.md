@@ -1,6 +1,6 @@
 # Tutu
 
-Use [monorepo](https://mm.dreamineering.com/docs/projects/monorepo-apps/) architecture to build multiple apps from shared libraries to create a foundational [Web3 Startup Model](https://mm.dreamineering.com/docs/blockchain/startups/playbook) that enables the creation of value from ideas with optimal flow.
+Use [monorepo](https://mm.dreamineering.com/docs/projects/monorepo-apps/) architecture to build multiple apps from shared libraries to create a foundational [Web3 Startup Model](https://mm.dreamineering.com/docs/web3/startups/playbook) that enables the creation of value from ideas with optimal flow.
 
 1. [Understand:](https://mm.dreamineering.com/docs/humans/skills/meta-learning/) [Good Pattterns](https://mm.dreamineering.com/docs/engineering/software/smart-contracts/patterns/) from Bad and why?
 2. [Review:](https://mm.dreamineering.com/docs/flow/act/) with spaced repetition linked to linked thinking documentation to accelerate actionable knowledge.
@@ -12,8 +12,8 @@ Use [monorepo](https://mm.dreamineering.com/docs/projects/monorepo-apps/) archit
 
 Innovate at the edges then pull proven patterns into the core.
 
-- [Web3 Analysis](https://mm.dreamineering.com/docs/blockchain/)
-- [Web3 Startup Playbook](https://mm.dreamineering.com/docs/blockchain/startups/playbook)
+- [Web3 Analysis](https://mm.dreamineering.com/docs/web3/)
+- [Web3 Startup Playbook](https://mm.dreamineering.com/docs/web3/startups/playbook)
 - [Web3 Dev Roadmap](https://mm.dreamineering.com/docs/engineering/software/developer-roadmaps)
 
 ## Plan
