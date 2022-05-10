@@ -6,13 +6,13 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { ethers } from 'ethers';
 
+/* import Application Binary Interface (ABI) */
+import { blogABI } from '@drmg/ethereum';
+
 /* import contract address and contract owner address */
 import { ownerAddress, contractAddress } from '../contracts/addresses';
 import { AccountContext } from '../context/BasicAccountContext';
 // import { AccountContext } from '@drmg/stackmates/context/BasicAccountContext';
-
-/* import Application Binary Interface (ABI) */
-import Blog from '../../../libs/ethereum/src/generated/artifacts/contracts/Blog.sol/Blog.json';
 
 export default function Home(props) {
   /* posts are fetched server side and passed in as props */
@@ -76,7 +76,7 @@ export async function getServerSideProps() {
     provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/');
   }
 
-  const contract = new ethers.Contract(contractAddress, Blog.abi, provider);
+  const contract = new ethers.Contract(contractAddress, blogABI, provider);
   const data = await contract.fetchPosts();
   return {
     props: {
