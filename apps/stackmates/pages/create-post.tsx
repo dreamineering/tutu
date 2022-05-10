@@ -7,9 +7,10 @@ import dynamic from 'next/dynamic';
 import { ethers } from 'ethers';
 import { create } from 'ipfs-http-client';
 
+import { blogABI } from '@drmg/ethereum';
 /* import contract address and contract owner address */
 import { contractAddress } from '../contracts/addresses';
-import Blog from '../../../libs/ethereum/src/generated/artifacts/contracts/Blog.sol/Blog.json';
+/// import Blog from '../../../libs/ethereum/src/generated/artifacts/contracts/Blog.sol/Blog.json';
 
 /* define the ipfs endpoint */
 const client = create('https://ipfs.infura.io:5001/api/v0');
@@ -65,7 +66,7 @@ function CreatePost() {
     if (typeof window.ethereum !== 'undefined') {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-      const contract = new ethers.Contract(contractAddress, Blog.abi, signer);
+      const contract = new ethers.Contract(contractAddress, blogABI, signer);
       console.log('contract: ', contract);
       try {
         const val = await contract.createPost(post.title, hash);

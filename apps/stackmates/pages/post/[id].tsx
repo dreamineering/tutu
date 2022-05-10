@@ -7,7 +7,8 @@ import Link from 'next/link';
 
 import { ethers } from 'ethers';
 
-import Blog from '../../../../libs/ethereum/src/generated/artifacts/contracts/Blog.sol/Blog.json';
+import { blogABI } from '@drmg/ethereum';
+//import Blog from '../../../../libs/ethereum/src/generated/artifacts/contracts/Blog.sol/Blog.json';
 /* import contract and owner addresses */
 import { contractAddress, ownerAddress } from '../../contracts/addresses';
 import { AccountContext } from '../../context/BasicAccountContext';
@@ -65,8 +66,9 @@ export async function getStaticPaths() {
   } else {
     provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/');
   }
+  provider = new ethers.providers.JsonRpcProvider();
 
-  const contract = new ethers.Contract(contractAddress, Blog.abi, provider);
+  const contract = new ethers.Contract(contractAddress, blogABI, provider);
   const data = await contract.fetchPosts();
 
   /* then we map over the posts and create a params object passing */

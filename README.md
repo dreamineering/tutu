@@ -16,6 +16,11 @@ Innovate at the edges then pull proven patterns into the core.
 - [Web3 Startup Playbook](https://mm.dreamineering.com/docs/web3/startups/playbook)
 - [Web3 Dev Roadmap](https://mm.dreamineering.com/docs/engineering/software/developer-roadmaps)
 
+Analysis spreadsheets:
+
+- [Web3 Business Models](https://docs.google.com/spreadsheets/d/1Lp6VNvj7d_rWV0hUHR6YxqijnECtg32XDVinhucBaS0/edit#gid=1528191388)
+- [Web3 Stack Analysis](https://docs.google.com/spreadsheets/d/1ohhinbb1QvTZD7ZXpMBToFutBvsjdfvCuQR3bO3MQxE/edit#gid=194008115)
+
 ## Plan
 
 Help to drive standardisation of naming conventions, and best practices to help conceptual and fundamental leaps forward in the world of multi-chain development.
@@ -59,8 +64,42 @@ Workaround: after clone and yarn install in hardhat.config.ts comment out **task
 import './libs/ethereum/src/tasks';
 ```
 
-Generate **typechain** files then uncomment **tasks** import.
+Generate **typechain** files
 
 ```bash
 nx run ethereum:hh-typechain
 ```
+
+Uncomment **tasks** import.
+
+```bash
+nx run ethereum:hh-deploy
+```
+
+```bash
+nx run ethereum:hh-node
+```
+
+If issues, clean, deploy, and hh-node
+
+```bash
+nx run ethereum:hh-clean
+```
+
+## Importing Contracts
+
+Ethereum Lib: Export generated output in _libs/ethereum/src/index.ts_
+
+```ts
+import * as generatedBlogABI from './generated/artifacts/contracts/Blog.sol/Blog.json';
+export const blogABI = generatedBlogABI.abi;
+```
+
+Apps: Import contract ABI from @drmg/ethereum
+
+```ts
+/* import Application Binary Interface (ABI) */
+import { blogABI } from '@drmg/ethereum';
+```
+
+See _apps/stackmates_ for an example

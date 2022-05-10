@@ -63,10 +63,13 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
+  const env = process.env.ENVIRONMENT.trim();
+
   /* here we check to see the current environment variable */
   /* and render a provider based on the environment we're in */
   let provider;
-  if (process.env.ENVIRONMENT === 'local') {
+  if (env === 'local') {
+    console.log('ME');
     provider = new ethers.providers.JsonRpcProvider();
   } else if (process.env.ENVIRONMENT === 'testnet') {
     provider = new ethers.providers.JsonRpcProvider(
@@ -75,6 +78,9 @@ export async function getServerSideProps() {
   } else {
     provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/');
   }
+
+  // TODO: resolve provider matching / convert to using scaffold eth components
+  provider = new ethers.providers.JsonRpcProvider();
 
   const contract = new ethers.Contract(contractAddress, blogABI, provider);
   const data = await contract.fetchPosts();

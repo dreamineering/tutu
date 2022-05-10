@@ -8,8 +8,8 @@ import dynamic from 'next/dynamic';
 import { ethers } from 'ethers';
 import { create } from 'ipfs-http-client';
 
+import { blogABI } from '@drmg/ethereum';
 import { contractAddress } from '../../contracts/addresses';
-import Blog from '../../../../libs/ethereum/src/generated/artifacts/contracts/Blog.sol/Blog.json';
 
 const ipfsURI = 'https://ipfs.io/ipfs/';
 const client = create('https://ipfs.infura.io:5001/api/v0');
@@ -43,7 +43,9 @@ export default function Post() {
         'https://polygon-rpc.com/'
       );
     }
-    const contract = new ethers.Contract(contractAddress, Blog.abi, provider);
+
+    provider = new ethers.providers.JsonRpcProvider();
+    const contract = new ethers.Contract(contractAddress, blogABI, provider);
     const val = await contract.fetchPost(id);
     const postId = val[0].toNumber();
 
@@ -74,7 +76,7 @@ export default function Post() {
     const hash = await savePostToIpfs();
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    const contract = new ethers.Contract(contractAddress, Blog.abi, signer);
+    const contract = new ethers.Contract(contractAddress, blogABI, signer);
     await contract.updatePost(post.id, post.title, hash, true);
     router.push('/');
   }

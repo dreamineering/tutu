@@ -1,7 +1,7 @@
 import * as generatedYourContractABI from './generated/artifacts/contracts/YourContract.sol/YourContract.json';
-import * as generatedBlogABI from './generated/artifacts/contracts/Blog.sol/Blog.json';
-
 export const yourContractABI = generatedYourContractABI.abi;
+
+import * as generatedBlogABI from './generated/artifacts/contracts/Blog.sol/Blog.json';
 export const blogABI = generatedBlogABI.abi;
 
 // ADDRESSES
