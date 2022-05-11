@@ -5,10 +5,12 @@ import * as fs from 'fs';
 
 import chalk from 'chalk';
 
+// unused
 // const publishGenerated = '../vite-app-ts/src/generated/contracts';
 // const publishDir = `${publishGenerated}/contracts`;
-const deploymentsDir = './generated/deployments';
 // const typechainDir = './generated/typechain';
+
+const deploymentsDir = './generated/deployments';
 const graphDir = '../subgraph';
 
 const publishContract = (

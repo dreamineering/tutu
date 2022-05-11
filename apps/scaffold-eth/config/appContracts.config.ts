@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-
 import {
+  createConnectorForExternalContract,
   createConnectorForHardhatContract,
-  // createConnectorForExternalContract,
 } from '@drmg/shared/ui';
+// import { createConnectorForHardhatContract } from '@drmg/shared/ui';
 
-// YOUR CONTRACTS
 import hardhatContractsJson from '../generated/hardhat_contracts.json';
-import * as hardhatContracts from '../generated/contract-types';
 
-// THIRD PARTY EXTERNAL CONTRACTS
+// import * as hardhatContracts from '../generated/contract-types';
+import { hardhatContracts } from '@drmg/ethereum';
+
+// import { DAI } from '@drmg/shared/data-access/smart-contracts';
 // import { externalContractsAddressMap } from './externalContracts.config';
-// import * as externalContracts from '~~/generated/external-contracts/esm/types';
+// import * as externalContracts from '../generated/external-contracts/esm/types';
+// import * as externalContracts from '../generated/external-contracts/types';
 
 /**
  * ⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️
@@ -25,7 +27,7 @@ import * as hardhatContracts from '../generated/contract-types';
  * - called  by useAppContracts
  * @returns
  */
-export const contractConnectorConfig = () => {
+export const appContractsConfig = () => {
   try {
     const result = {
       // --------------------------------------------------
@@ -46,7 +48,12 @@ export const contractConnectorConfig = () => {
       // --------------------------------------------------
       // 🙋🏽‍♂️ Add your external contracts here, make sure to define the address in `externalContractsConfig.ts`
       // --------------------------------------------------
-      // DAI: createConnectorForExternalContract('DAI', externalContracts.DAI__factory, externalContractsAddressMap),
+      // ISSUE libraary is failing to build types
+      // DAI: createConnectorForExternalContract(
+      //   'DAI',
+      //   externalContracts.DAI__factory,
+      //   externalContractsAddressMap
+      // ),
 
       // --------------------------------------------------
       // 🙋🏽‍♂️ Add your external abi here (unverified contracts)`
@@ -80,5 +87,5 @@ export const contractConnectorConfig = () => {
  * This type describes all your contracts, it is the return of {@link appContractsConfig}
  */
 export type TAppConnectorList = NonNullable<
-  ReturnType<typeof contractConnectorConfig>
+  ReturnType<typeof appContractsConfig>
 >;

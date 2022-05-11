@@ -1,3 +1,5 @@
+export * as hardhatContracts from './generated/typechain/factories/contracts';
+
 import * as generatedYourContractABI from './generated/artifacts/contracts/YourContract.sol/YourContract.json';
 export const yourContractABI = generatedYourContractABI.abi;
 

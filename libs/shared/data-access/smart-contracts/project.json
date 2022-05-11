@@ -13,6 +13,21 @@
         ]
       }
     },
+    "external": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        // "cwd": "libs/shared/data-access/smart-contracts",
+        "command": "yarn shx rm -rf './libs/shared/data-access/smart-contracts/src/lib/external-contracts' && yarn eth-sdk -p ./libs/shared/data-access/smart-contracts/src"
+        // "command": "yarn shx rm -rf './src/lib/external-contracts' && yarn shx cp -r './scripts/eth-sdk-config.ts.bak' './src/eth-sdk.config.ts' && yarn eth-sdk -p ./src"
+      }
+    },
+    "types": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn abi-types-generator './libs/shared/data-access/smart-contracts/src/abis/mainnet/dai.json' --output='./libs/shared/data-access/smart-contracts/src/lib/external-contracts'"
+        // "command": "abi-types-generator './abi-examples/uniswap-factory-abi.json' --output='./web3/uniswap-example/generated-typings' --name=uniswap-factory-contract"
+      }
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/shared/data-access/smart-contracts"],

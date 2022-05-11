@@ -1,7 +1,11 @@
 import { BaseContract, ethers } from 'ethers';
 import { merge } from 'merge-anything';
 
-import { TContractConnectorBase, TContractConnector, TContractConnectFunc } from '../../models';
+import {
+  TContractConnectorBase,
+  TContractConnector,
+  TContractConnectFunc,
+} from '../../models';
 import {
   THardhatContractDataRecord,
   TExternalContractsAddressMap,
@@ -10,7 +14,9 @@ import {
   TExternalContractDataRecord,
 } from '../../models/contractTypes';
 
-const extractHardhatContracts = (configJson: TDeployedHardhatContractsJson): THardhatContractDataRecord => {
+const extractHardhatContracts = (
+  configJson: TDeployedHardhatContractsJson
+): THardhatContractDataRecord => {
   const contractData: THardhatContractDataRecord = {};
   for (const chainIdStr in configJson) {
     const chainId = parseInt(chainIdStr);
@@ -22,14 +28,22 @@ const extractHardhatContracts = (configJson: TDeployedHardhatContractsJson): THa
     if (deployedDataByNetwork?.chainId != null) {
       for (const contractName in deployedDataByNetwork.contracts) {
         const config: TBasicContractDataConfig = {
-          [chainId]: { address: deployedDataByNetwork.contracts[contractName].address, chainId },
+          [chainId]: {
+            address: deployedDataByNetwork.contracts[contractName].address,
+            chainId,
+          },
         };
 
         const abi = deployedDataByNetwork.contracts[contractName].abi;
         if (abi && abi?.length > 0) {
-          contractData[contractName] = merge(contractData[contractName] ?? {}, { abi: abi });
+          contractData[contractName] = merge(contractData[contractName] ?? {}, {
+            abi: abi,
+          });
         }
-        contractData[contractName] = merge({ ...contractData[contractName] }, { config });
+        contractData[contractName] = merge(
+          { ...contractData[contractName] },
+          { config }
+        );
       }
     }
   }
@@ -37,7 +51,9 @@ const extractHardhatContracts = (configJson: TDeployedHardhatContractsJson): THa
   return contractData;
 };
 
-const extractExternalContracts = (configJson: TExternalContractsAddressMap): TExternalContractDataRecord => {
+const extractExternalContracts = (
+  configJson: TExternalContractsAddressMap
+): TExternalContractDataRecord => {
   const contractData: TExternalContractDataRecord = {};
   for (const chainIdStr in configJson) {
     const chainId = parseInt(chainIdStr);
@@ -45,21 +61,32 @@ const extractExternalContracts = (configJson: TExternalContractsAddressMap): TEx
 
     for (const contractName in configJson[chainId]) {
       const config: TBasicContractDataConfig = {
-        [chainId]: { address: configJson[chainId][contractName], chainId: chainId },
+        [chainId]: {
+          address: configJson[chainId][contractName],
+          chainId: chainId,
+        },
       };
-      contractData[contractName] = merge({ ...(contractData[contractName] ?? {}) }, { config });
+      contractData[contractName] = merge(
+        { ...(contractData[contractName] ?? {}) },
+        { config }
+      );
     }
   }
 
   return contractData;
 };
 
-export const createConnectorForHardhatContract = <GContractNames extends string, GBaseContract extends BaseContract>(
+export const createConnectorForHardhatContract = <
+  GContractNames extends string,
+  GBaseContract extends BaseContract
+>(
   contractName: GContractNames,
   typechainFactory: TContractConnectorBase<GBaseContract>,
   deployedHardhatContractJson: TDeployedHardhatContractsJson
 ): TContractConnector<GContractNames, GBaseContract> => {
-  const info = extractHardhatContracts(deployedHardhatContractJson)[contractName];
+  const info = extractHardhatContracts(deployedHardhatContractJson)[
+    contractName
+  ];
 
   if (info == null || info.abi == null) {
     throw new Error(
@@ -78,7 +105,10 @@ export const createConnectorForHardhatContract = <GContractNames extends string,
   };
 };
 
-export const createConnectorForExternalContract = <GContractNames extends string, GBaseContract extends BaseContract>(
+export const createConnectorForExternalContract = <
+  GContractNames extends string,
+  GBaseContract extends BaseContract
+>(
   contractName: GContractNames,
   typechainFactory: TContractConnectorBase<GBaseContract>,
   deployedContractJson: TExternalContractsAddressMap
@@ -121,8 +151,15 @@ export const createConnectorForExternalAbi = <
   } else {
     return {
       contractName,
-      connect: (address: string, signerOrProvider: ethers.Signer | ethers.providers.Provider): GBaseContract => {
-        return new BaseContract(address, abi, signerOrProvider) as GBaseContract;
+      connect: (
+        address: string,
+        signerOrProvider: ethers.Signer | ethers.providers.Provider
+      ): GBaseContract => {
+        return new BaseContract(
+          address,
+          abi,
+          signerOrProvider
+        ) as GBaseContract;
       },
       abi: abi,
       config: { ...config },

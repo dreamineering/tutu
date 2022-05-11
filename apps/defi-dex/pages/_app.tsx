@@ -1,6 +1,9 @@
+import '../assets/main.css';
+
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import './styles.css';
+
+import { EthersAppContext } from '@drmg/shared/ui';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -9,7 +12,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Welcome to defi-dex!</title>
       </Head>
       <main className="app">
-        <Component {...pageProps} />
+        <EthersAppContext>
+          <Component {...pageProps} />
+        </EthersAppContext>
       </main>
     </>
   );
