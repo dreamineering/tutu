@@ -22,10 +22,13 @@ import ethers from 'ethers';
 
 // shared library hooks
 import {
+  asEthersAdaptor,
   useBalance, // good
   useContractLoader,
   useContractReader,
   useDexEthPrice,
+  useEthersAppContext,
+  useEventListener,
   // useGasPrice,
   // useOnBlock,
   // useUserProviderAndSigner,
@@ -100,6 +103,11 @@ export function New() {
   // 🛰 providers
   // see useLoadProviders.ts for everything to do with loading the right providers
   const scaffoldAppProviders = useScaffoldAppProviders();
+  const ethersAppContext = useEthersAppContext();
+
+  useLoadAppContracts();
+  // 🏭 connec to  contracts for current network & signer
+  useConnectAppContracts(asEthersAdaptor(ethersAppContext));
 
   const [ethPrice] = useDexEthPrice(
     scaffoldAppProviders.mainnetAdaptor?.provider,
@@ -107,9 +115,12 @@ export function New() {
   );
 
   // init contracts
-  const yourContract = useAppContracts('YourContract', ethersContext.chainId);
-  const yourNFT = useAppContracts('YourNFT', ethersAppContext.chainId);
-  const mainnetDai = useAppContracts('DAI', NETWORKS.mainnet.chainId);
+  const yourContract = useAppContracts(
+    'YourContract',
+    ethersAppContext.chainId
+  );
+  // const yourNFT = useAppContracts('YourNFT', ethersAppContext.chainId);
+  // const mainnetDai = useAppContracts('DAI', NETWORKS.mainnet.chainId);
 
   // keep track of a variable from the contract in the local React state:
   const [purpose, update] = useContractReader(

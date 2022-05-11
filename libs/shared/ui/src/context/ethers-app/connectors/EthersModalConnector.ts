@@ -12,7 +12,8 @@ import {
   connectorErrorText,
   NoEthereumProviderFoundError,
   NoStaticJsonRPCProviderFoundError,
-} from '../../../helpers/typedoc/context.docs';
+} from '../../ethers-app';
+
 import { TEthersProvider } from '../../../models';
 import {
   const_web3DialogClosedByUser,
@@ -105,8 +106,8 @@ export class EthersModalConnector
       reloadOnNetworkChange: false,
       immutableProvider: false,
     },
-    id?: string,
-    debug: boolean = false
+    debug: false,
+    id?: string
   ) {
     super();
 
