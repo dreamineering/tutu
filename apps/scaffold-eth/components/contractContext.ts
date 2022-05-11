@@ -1,5 +1,4 @@
-import { contractsContextFactory } from '@drmg/shared/ui';
-import { TTypedContract } from '@drmg/shared/ui';
+import { contractsContextFactory, TTypedContract } from '@drmg/shared/ui';
 
 import {
   appContractsConfig,
@@ -20,17 +19,6 @@ import {
  * - This will create your hooks to access contracts
  * - The type is your contract connect config.
  */
-// export const {
-//   ContractsAppContext,
-//   useAppContractsActions,
-//   useAppContracts,
-//   useLoadAppContracts,
-//   useConnectAppContracts,
-// } = contractsContextFactory<
-//   keyof TAppConnectorList,
-//   TTypedContract<keyof TAppConnectorList, TAppConnectorList>
-// >(appContractsConfig);
-
 export const {
   ContractsAppContext,
   useAppContractsActions,

@@ -15,7 +15,7 @@ import Head from 'next/head';
 
 import { EthersAppContext } from '@drmg/shared/ui';
 
-import { ContractsAppContext } from '../context/contractContext';
+import { ContractsAppContext } from '../components/contractContext';
 import {
   ErrorBoundary,
   ErrorFallback,

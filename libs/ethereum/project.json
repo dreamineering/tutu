@@ -9,6 +9,18 @@
         "command": "yarn hardhat deploy"
       }
     },
+    "hh-redeploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        //"command": "yarn hardhat deploy --export-all ./hardhat_contracts.json",
+        "commands": [
+          {
+            "command": "yarn hardhat deploy --export-all hardhat_contracts.json"
+            // "command": "hardhat run ./libs/ethereum/src/scripts/publish.ts"
+          }
+        ]
+      }
+    },
     "hh-deploy-polygon-test": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {

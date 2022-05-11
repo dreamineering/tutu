@@ -6,7 +6,11 @@ import { useScaffoldProviders as useScaffoldAppProviders } from '../components/m
 // local shared function
 import { getNetworkInfo } from '../functions/getNetworkInfo';
 
-import { useEthersContext, useDexEthPrice, useGasPrice } from '@drmg/shared/ui'; // hooks
+import {
+  useEthersAppContext,
+  useDexEthPrice,
+  useGasPrice,
+} from '@drmg/shared/ui'; // hooks
 import { Account, Faucet, GasGauge, Wallet } from '@drmg/shared/ui'; // components
 
 // local components
@@ -16,7 +20,7 @@ import {
 } from '../components/common/FaucetHintButton';
 
 export function EthComponents() {
-  const ethersContext = useEthersContext();
+  const ethersContext = useEthersAppContext();
   const network = getNetworkInfo(ethersContext.chainId);
 
   // Providers, signers & wallets
