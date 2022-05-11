@@ -10,7 +10,7 @@
     "importHelpers": true,
     "target": "esnext",
     "module": "esnext",
-    "lib": ["esnext",  "dom.iterable",  "dom"],
+    "lib": ["esnext", "dom.iterable", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -21,6 +21,9 @@
       ],
       "@drmg/shared/data-access/scaffold-eth": [
         "libs/shared/data-access/scaffold-eth/src/index.ts"
+      ],
+      "@drmg/shared/data-access/smart-contracts": [
+        "libs/shared/data-access/smart-contracts/src/index.ts"
       ],
       "@drmg/shared/ui": ["libs/shared/ui/src/index.ts"],
       "@drmg/stackmates": ["apps/stackmates/index.d.ts"]

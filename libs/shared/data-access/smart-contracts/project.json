@@ -1,0 +1,25 @@
+{
+  "root": "libs/shared/data-access/smart-contracts",
+  "sourceRoot": "libs/shared/data-access/smart-contracts/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/data-access/smart-contracts/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/data-access/smart-contracts"],
+      "options": {
+        "jestConfig": "libs/shared/data-access/smart-contracts/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

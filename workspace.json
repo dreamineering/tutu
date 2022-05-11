@@ -8,6 +8,7 @@
     "scaffold-eth-e2e": "apps/scaffold-eth-e2e",
     "shared-data-access-integrations": "libs/shared/data-access/integrations",
     "shared-data-access-scaffold-eth": "libs/shared/data-access/scaffold-eth",
+    "shared-data-access-smart-contracts": "libs/shared/data-access/smart-contracts",
     "shared-ui": "libs/shared/ui",
     "stackmates": "apps/stackmates",
     "stackmates-e2e": "apps/stackmates-e2e",
