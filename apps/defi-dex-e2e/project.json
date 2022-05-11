@@ -1,0 +1,28 @@
+{
+  "root": "apps/defi-dex-e2e",
+  "sourceRoot": "apps/defi-dex-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/defi-dex-e2e/cypress.json",
+        "devServerTarget": "defi-dex:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "defi-dex:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/defi-dex-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["defi-dex"]
+}

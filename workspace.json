@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "defi-dex": "apps/defi-dex",
+    "defi-dex-e2e": "apps/defi-dex-e2e",
     "ethereum": "libs/ethereum",
     "nft-marketplace": "apps/nft-marketplace",
     "nft-marketplace-e2e": "apps/nft-marketplace-e2e",

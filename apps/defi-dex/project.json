@@ -1,0 +1,60 @@
+{
+  "root": "apps/defi-dex",
+  "sourceRoot": "apps/defi-dex",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/defi-dex",
+        "outputPath": "dist/apps/defi-dex"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "defi-dex:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "defi-dex:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "defi-dex:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "defi-dex:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/defi-dex"],
+      "options": {
+        "jestConfig": "apps/defi-dex/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/defi-dex/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

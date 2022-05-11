@@ -1,5 +1,6 @@
 import '../assets/chrome-bug.css';
 import '../assets/main.css';
+
 // setup themes for theme switcher
 const themes = {
   dark: '../assets/dark-theme.css',
