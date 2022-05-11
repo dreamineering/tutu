@@ -2,7 +2,7 @@ import { BaseContract, ContractFunction } from 'ethers';
 import { useState, useCallback, useEffect } from 'react';
 import { useIsMounted } from 'usehooks-ts';
 
-import { useBlockNumberContext, useEthersContext } from '../context';
+import { useBlockNumberContext, useEthersAppContext } from '../context';
 import { mergeDefaultOverride, ethersOverride } from '../functions';
 import { TContractFunctionInfo, TOverride } from '../models';
 
@@ -33,31 +33,48 @@ export const useContractReaderUntyped = <GOutput>(
   const isMounted = useIsMounted();
   const [value, setValue] = useState<GOutput>();
   const blockNumber = useBlockNumberContext();
-  const ethersContext = useEthersContext(override.alternateContextKey);
+  const ethersContext = useEthersAppContext(override.alternateContextKey);
   const { chainId } = ethersOverride(ethersContext, override);
 
   const callContractFunction = useCallback(async () => {
-    const contractFunction = contract.functions?.[contractFunctionInfo.functionName] as ContractFunction<GOutput>;
+    const contractFunction = contract.functions?.[
+      contractFunctionInfo.functionName
+    ] as ContractFunction<GOutput>;
     let result: GOutput | undefined = undefined;
     try {
-      if (contractFunctionInfo.functionArgs && contractFunctionInfo.functionArgs.length > 0) {
+      if (
+        contractFunctionInfo.functionArgs &&
+        contractFunctionInfo.functionArgs.length > 0
+      ) {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         result = await contractFunction?.(...contractFunctionInfo.functionArgs);
       } else {
         result = await contractFunction?.();
       }
     } catch (error: any) {
-      console.warn('Could not read from contract function', contractFunctionInfo);
+      console.warn(
+        'Could not read from contract function',
+        contractFunctionInfo
+      );
     }
     return result;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [contract, contractFunctionInfo.functionArgs, contractFunctionInfo.functionName]);
+  }, [
+    contract,
+    contractFunctionInfo.functionArgs,
+    contractFunctionInfo.functionName,
+  ]);
 
   const contractProvider = contract?.provider;
 
   const callFunc = useCallback(async () => {
     const contractChainId = (await contractProvider?.getNetwork())?.chainId;
-    if (callContractFunction != null && contractChainId === chainId && contractProvider != null && chainId != null) {
+    if (
+      callContractFunction != null &&
+      contractChainId === chainId &&
+      contractProvider != null &&
+      chainId != null
+    ) {
       try {
         let newResult: GOutput | undefined = await callContractFunction();
         if (
@@ -65,7 +82,8 @@ export const useContractReaderUntyped = <GOutput>(
           newResult.length === 1 &&
           (typeof newResult[0] === 'string' || typeof newResult[0] === 'number')
         ) {
-          // @ts-ignore
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore - we know it's an array
           newResult = newResult[0];
         }
 
@@ -75,7 +93,10 @@ export const useContractReaderUntyped = <GOutput>(
 
         if (isMounted()) {
           setValue((value) => {
-            if (!Object.is(value, newResult) && JSON.stringify(value) !== JSON.stringify(newResult)) {
+            if (
+              !Object.is(value, newResult) &&
+              JSON.stringify(value) !== JSON.stringify(newResult)
+            ) {
               return newResult;
             }
             return value;
@@ -86,7 +107,14 @@ export const useContractReaderUntyped = <GOutput>(
         console.warn(error);
       }
     }
-  }, [contractProvider, callContractFunction, chainId, formatter, isMounted, onChange]);
+  }, [
+    contractProvider,
+    callContractFunction,
+    chainId,
+    formatter,
+    isMounted,
+    onChange,
+  ]);
 
   useEffect(() => {
     void callFunc();

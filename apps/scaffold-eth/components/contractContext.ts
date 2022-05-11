@@ -20,6 +20,17 @@ import {
  * - This will create your hooks to access contracts
  * - The type is your contract connect config.
  */
+// export const {
+//   ContractsAppContext,
+//   useAppContractsActions,
+//   useAppContracts,
+//   useLoadAppContracts,
+//   useConnectAppContracts,
+// } = contractsContextFactory<
+//   keyof TAppConnectorList,
+//   TTypedContract<keyof TAppConnectorList, TAppConnectorList>
+// >(appContractsConfig);
+
 export const {
   ContractsAppContext,
   useAppContractsActions,
@@ -28,5 +39,6 @@ export const {
   useConnectAppContracts,
 } = contractsContextFactory<
   keyof TAppConnectorList,
+  TAppConnectorList,
   TTypedContract<keyof TAppConnectorList, TAppConnectorList>
 >(appContractsConfig);

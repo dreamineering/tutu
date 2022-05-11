@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 
 import { useEthersUpdater } from './useEthersUpdater';
 
-import { useEthersContext, useBlockNumberContext } from '../context';
+import { useEthersAppContext, useBlockNumberContext } from '../context';
 import {
   asyncForEach,
   ethersOverride,
@@ -15,7 +15,10 @@ import { providerKey, TRequiredKeys } from '../functions/keyHelpers';
 import { THookResult, TOverride, TUpdateOptions } from '../models';
 import { keyNamespace } from '../models/constants';
 
-const queryKey: TRequiredKeys = { namespace: keyNamespace.signer, key: 'useBalance' };
+const queryKey: TRequiredKeys = {
+  namespace: keyNamespace.signer,
+  key: 'useBalance',
+};
 
 const zero = BigNumber.from(0);
 
@@ -24,9 +27,8 @@ const zero = BigNumber.from(0);
  * #### Summary
  * A conditional type for useBalance result based on input parameters.  It is either a BigNumber or a Record<string, BigNumber> depending on the input addres being a string or string[]
  */
-type TUseBalanceResult<GAddress extends string | string[]> = GAddress extends string[]
-  ? Record<string, BigNumber>
-  : BigNumber;
+type TUseBalanceResult<GAddress extends string | string[]> =
+  GAddress extends string[] ? Record<string, BigNumber> : BigNumber;
 
 /**
  * #### Summary
@@ -48,11 +50,13 @@ export const useBalance = <GAddress extends string | Array<string>>(
   options: TUpdateOptions = mergeDefaultUpdateOptions(),
   override: TOverride = mergeDefaultOverride()
 ): THookResult<TUseBalanceResult<GAddress>> => {
-  const ethersContext = useEthersContext(override.alternateContextKey);
+  const ethersContext = useEthersAppContext(override.alternateContextKey);
   const { provider } = ethersOverride(ethersContext, override);
 
-  const keys = [{ ...queryKey, ...providerKey(provider) }, { addresses }] as const;
-
+  const keys = [
+    { ...queryKey, ...providerKey(provider) },
+    { addresses },
+  ] as const;
   const { data, refetch, status } = useQuery(
     keys,
     async (keys): Promise<TUseBalanceResult<GAddress> | undefined> => {
@@ -76,7 +80,8 @@ export const useBalance = <GAddress extends string | Array<string>>(
     },
     {
       ...processQueryOptions<TUseBalanceResult<GAddress> | undefined>(options),
-      isDataEqual: (oldResult, newResult) => oldResult?._hex === newResult?._hex,
+      isDataEqual: (oldResult, newResult) =>
+        oldResult?._hex === newResult?._hex,
     }
   );
 

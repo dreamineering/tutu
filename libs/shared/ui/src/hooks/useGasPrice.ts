@@ -1,9 +1,9 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { utils } from 'ethers';
 import { useQuery } from 'react-query';
 import { useDebounce } from 'use-debounce';
 
-import { useEthersContext, useBlockNumberContext } from '../context';
+import { useEthersAppContext, useBlockNumberContext } from '../context';
 import {
   ethersOverride,
   mergeDefaultOverride,
@@ -13,9 +13,18 @@ import {
   TRequiredKeys,
 } from '../functions';
 import { useEthersUpdater } from '../hooks/useEthersUpdater';
-import { TOverride, TNetworkInfo, TUpdateOptions, keyNamespace, THookResult } from '../models';
+import {
+  TOverride,
+  TNetworkInfo,
+  TUpdateOptions,
+  keyNamespace,
+  THookResult,
+} from '../models';
 
-const queryKey: TRequiredKeys = { namespace: keyNamespace.state, key: 'useGasPrice' } as const;
+const queryKey: TRequiredKeys = {
+  namespace: keyNamespace.state,
+  key: 'useGasPrice',
+} as const;
 
 /**
  * Preset speeds for Eth Gas Station API
@@ -53,7 +62,7 @@ export const useGasPrice = (
   options: TUpdateOptions = mergeDefaultUpdateOptions(),
   override: TOverride = mergeDefaultOverride()
 ): THookResult<number | undefined> => {
-  const ethersContext = useEthersContext(override.alternateContextKey);
+  const ethersContext = useEthersAppContext(override.alternateContextKey);
   const { provider } = ethersOverride(ethersContext, override);
 
   const keys = [
@@ -69,8 +78,11 @@ export const useGasPrice = (
       } else if (chainId === 1) {
         if (navigator?.onLine) {
           const gweiFactor = 10;
-          const response = await axios.get('https://ethgasstation.info/json/ethgasAPI.json');
-          const result: Record<string, any> = (response.data as Record<string, any>) ?? {};
+          const response = await fetch(
+            'https://ethgasstation.info/json/ethgasAPI.json'
+          );
+          const result: Record<string, any> =
+            (response.json() as Record<string, any>) ?? {};
           let newGasPrice: number | undefined = result[speed] / gweiFactor;
           if (!newGasPrice) newGasPrice = result['fast'] / gweiFactor;
           return newGasPrice;

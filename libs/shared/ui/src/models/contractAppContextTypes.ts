@@ -24,7 +24,7 @@ export type TContractConnectorBase<GContract extends BaseContract> = Readonly<{
  * #### Summary
  * This type descripts a connector that has enough information to create a contract in a chain.  The contractName is required to use a group of connectors to create a connection of available contracts for the app.
  *
- * ##### Notes
+ * ##### ✏️ Notes
  * - The config would be a record of chain information that helps the factory create contracts for the app.
  * - based on {@link TContractConnectorBase} and uses {@link TBasicContractDataConfig}
  */
@@ -39,31 +39,40 @@ export type TContractConnector<
   } & TContractConnectorBase<GContract>
 >;
 
-export type TBaseContractExtended<GContractNames extends string> = BaseContract & { contractName: GContractNames };
+export type TBaseContractExtended<GContractNames extends string> =
+  BaseContract & { contractName: GContractNames };
 
 /**
  * #### Summary
  * A Record of typed connectors that can be used to create a contract.
  *
- * ##### Notes
+ * ##### ✏️ Notes
  * - used by {@link TAppContractsContext}
  */
-export type TConnectorList<GContractNames extends string, GContracts extends TBaseContractExtended<GContractNames>> = {
-  [contractName in GContractNames]: TContractConnector<GContractNames, GContracts>;
+export type TConnectorList<
+  GContractNames extends string,
+  GContracts extends TBaseContractExtended<GContractNames>
+> = {
+  [contractName in GContractNames]: TContractConnector<
+    GContractNames,
+    GContracts
+  >;
 };
 
 /**
  * #### Summary
  * A type that infers contract type `(extended from BaseContract)` based on connectors and contractName.  For example `DAI` from `{ DAI: { connect: ... } }`.  If the contractName is not found, it will return a BaseContract
  *
- * ##### Notes
+ * ##### ✏️ Notes
  * - used by {@link contractContextFactory}
  */
 export type TTypedContract<
   GContractNames extends string,
   GAppContractConnectorList
 > = GAppContractConnectorList extends {
-  [key in GContractNames]: { connect: (address: any, signerOrProvider: any) => infer TypedContract };
+  [key in GContractNames]: {
+    connect: (address: any, signerOrProvider: any) => infer TypedContract;
+  };
 }
   ? TypedContract
   : TBaseContractExtended<GContractNames>;
@@ -72,19 +81,23 @@ export type TTypedContract<
  * #### Summary
  * A utility type for typed contracts by name and then by chain
  *
- * ##### Notes
+ * ##### ✏️ Notes
  * - used by {@link TAppContractsContext}
  */
 export type TContractsByName<
   GContractNames extends string,
   GContracts extends TBaseContractExtended<GContractNames>
-> = { [contractName in GContractNames]: { [chainId in number]: GContracts | undefined } };
+> = {
+  [contractName in GContractNames]: {
+    [chainId in number]: GContracts | undefined;
+  };
+};
 
 /**
  * #### Summary
  * A utility type for typed contracts by chain and then by name
  *
- * ##### Notes
+ * ##### ✏️ Notes
  * - used by {@link TAppContractsContext}
  */
 export type TContractsByChainId<

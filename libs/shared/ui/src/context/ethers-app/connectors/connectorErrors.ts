@@ -1,12 +1,14 @@
 export const connectorErrorText = {
-  NoStaticJsonRPCProviderFoundError: 'Could not find a static json-rpc provider.  Is it running?',
+  NoStaticJsonRPCProviderFoundError:
+    'Could not find a static json-rpc provider.  Is it running?',
   NoEthereumProviderFoundError: 'No web3 provider found',
   CouldNotActivateError: 'Could not activate the web3 provider',
-  UserClosedModalError: 'Did not log in, the user did not select a web3 provider',
+  UserClosedModalError:
+    'Did not log in, the user did not select a web3 provider',
 } as const;
 
 /**
- * @category EthersContext
+ * @category EthersAppContext
  */
 export class UserClosedModalError extends Error {
   public constructor() {
@@ -17,18 +19,20 @@ export class UserClosedModalError extends Error {
 }
 
 /**
- * @category EthersContext
+ * @category EthersAppContext
  */
 export class CouldNotActivateError extends Error {
   public constructor(error: unknown) {
     super();
     this.name = this.constructor.name;
-    this.message = `EthersModalConnector: ${connectorErrorText.CouldNotActivateError}.  ${(error as string) ?? ''}`;
+    this.message = `EthersModalConnector: ${
+      connectorErrorText.CouldNotActivateError
+    }.  ${(error as string) ?? ''}`;
   }
 }
 
 /**
- * @category EthersContext
+ * @category EthersAppContext
  */
 export class NoEthereumProviderFoundError extends Error {
   public constructor() {
@@ -39,14 +43,14 @@ export class NoEthereumProviderFoundError extends Error {
 }
 
 /**
- * @category EthersContext
+ * @category EthersAppContext
  */
 export class NoStaticJsonRPCProviderFoundError extends Error {
   public constructor(error: unknown) {
     super();
     this.name = this.constructor.name;
-    this.message = `EthersModalConnector: ${connectorErrorText.NoStaticJsonRPCProviderFoundError}.   ${
-      (error as string) ?? ''
-    }`;
+    this.message = `EthersModalConnector: ${
+      connectorErrorText.NoStaticJsonRPCProviderFoundError
+    }.   ${(error as string) ?? ''}`;
   }
 }

@@ -1,15 +1,21 @@
 import { TokenInfo, TokenList } from '@uniswap/token-lists';
-import axios from 'axios';
 import isEqual from 'lodash.isequal';
 import { useQuery } from 'react-query';
 
 import { useBlockNumberContext } from '../../context';
-import { mergeDefaultUpdateOptions, processQueryOptions, TRequiredKeys } from '../../functions';
+import {
+  mergeDefaultUpdateOptions,
+  processQueryOptions,
+  TRequiredKeys,
+} from '../../functions';
 import { useEthersUpdater } from '../../hooks/useEthersUpdater';
 import { THookResult, TUpdateOptions } from '../../models';
 import { keyNamespace } from '../../models/constants';
 
-const queryKey: TRequiredKeys = { namespace: keyNamespace.signer, key: 'useDexTokenList' } as const;
+const queryKey: TRequiredKeys = {
+  namespace: keyNamespace.signer,
+  key: 'useDexTokenList',
+} as const;
 
 /**
  * #### Summary
@@ -25,7 +31,7 @@ const queryKey: TRequiredKeys = { namespace: keyNamespace.signer, key: 'useDexTo
  * @returns (TokenInfo[]) from '@uniswap/token-lists'
  */
 export const useDexTokenList = (
-  tokenListUri: string = 'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
+  tokenListUri: 'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
   chainId?: number,
   options: TUpdateOptions = mergeDefaultUpdateOptions()
 ): THookResult<TokenInfo[]> => {
@@ -35,14 +41,15 @@ export const useDexTokenList = (
     async (keys): Promise<TokenInfo[]> => {
       const { tokenListUri, chainId } = keys.queryKey[1];
       let tokenInfo: TokenInfo[] = [];
-      const tokenListResp: TokenList = (await axios(tokenListUri)).data as TokenList;
-      if (tokenListResp != null) {
+      const response = await fetch(tokenListUri);
+      const tokenList: TokenList = (await response.json()) as TokenList;
+      if (tokenList != null) {
         if (chainId) {
-          tokenInfo = tokenListResp.tokens.filter((t: TokenInfo) => {
+          tokenInfo = tokenList.tokens.filter((t: TokenInfo) => {
             return t.chainId === chainId;
           });
         } else {
-          tokenInfo = tokenListResp.tokens;
+          tokenInfo = tokenList.tokens;
         }
       }
       return tokenInfo;

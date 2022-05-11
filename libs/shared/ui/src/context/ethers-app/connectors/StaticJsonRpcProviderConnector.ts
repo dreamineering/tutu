@@ -1,7 +1,7 @@
 import { StaticJsonRpcProvider } from '@ethersproject/providers';
 import { IAbstractConnectorOptions } from 'web3modal';
 
-import { NoStaticJsonRPCProviderFoundError } from '../../../context/ethers/connectors/connectorErrors';
+import { NoStaticJsonRPCProviderFoundError } from './connectorErrors';
 
 /**
  * #### Summary
@@ -10,7 +10,21 @@ import { NoStaticJsonRPCProviderFoundError } from '../../../context/ethers/conne
  *
  * @category EthersContext
  */
-export interface IStaticJsonRpcProviderConnectorOptions extends IAbstractConnectorOptions {
+export interface IStaticJsonRpcProviderConnectorOptions
+  extends IAbstractConnectorOptions {
+  rpc: { [chainId: number]: string };
+  currentChainId: number;
+}
+
+/**
+ * #### Summary
+ * A web3modal CustomProvider Options
+ * - Options for web3modal that allows you to connect to a StaticJsonRpcProvider such as localhost
+ *
+ * @category EthersAppContext
+ */
+export interface IStaticJsonRpcProviderConnectorOptions
+  extends IAbstractConnectorOptions {
   rpc: { [chainId: number]: string };
   currentChainId: number;
 }
@@ -24,7 +38,7 @@ export interface IStaticJsonRpcProviderConnectorOptions extends IAbstractConnect
  * See scaffold-eth-typescript for an example that uses it to connect to a localhost burner wallet.
  * - [scaffold-eth-typescript example](https://github.com/scaffold-eth/scaffold-eth-typescript/blob/next/packages/vite-app-ts/src/config/web3ModalConfig.ts#L86)
  *
- * @category EthersContext
+ * @category EthersAppContext
  *
  * @param _package not used
  * @param opts
@@ -40,7 +54,9 @@ export const ConnectToStaticJsonRpcProvider = async (
     await provider.getNetwork();
     await provider.getBlockNumber();
     if (!provider?.anyNetwork) {
-      console.warn(`ConnectToStaticJsonRpcProvider: could not connect to chain: ${opts.currentChainId} url: ${url}`);
+      console.warn(
+        `ConnectToStaticJsonRpcProvider: could not connect to chain: ${opts.currentChainId} url: ${url}`
+      );
     }
     return provider;
   } catch (e) {

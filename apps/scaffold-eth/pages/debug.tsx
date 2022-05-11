@@ -38,7 +38,14 @@ import { useStaticJsonRPC } from '../hooks';
 
 import { useScaffoldProviders as useScaffoldAppProviders } from '../components/main/hooks/useScaffoldAppProviders';
 
+import {
+  useAppContracts,
+  useConnectAppContracts,
+  useLoadAppContracts,
+} from '../components/contractContext';
+
 import { MainPageHeader, MainPageFooter } from '../components/main';
+import { GenericContract } from '../components/generic-contract';
 
 const providers = [
   'https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406',
@@ -99,13 +106,35 @@ export function New() {
     scaffoldAppProviders.targetNetwork
   );
 
+  // init contracts
+  const yourContract = useAppContracts('YourContract', ethersContext.chainId);
+  const yourNFT = useAppContracts('YourNFT', ethersAppContext.chainId);
+  const mainnetDai = useAppContracts('DAI', NETWORKS.mainnet.chainId);
+
+  // keep track of a variable from the contract in the local React state:
+  const [purpose, update] = useContractReader(
+    yourContract,
+    yourContract?.purpose,
+    [],
+    yourContract?.filters.SetPurpose()
+  );
+
+  // 📟 Listen for broadcast events
+  const [setPurposeEvents] = useEventListener(yourContract, 'SetPurpose', 0);
+
   return (
     <div className="text-lg">
       <MainPageHeader
         scaffoldAppProviders={scaffoldAppProviders}
         price={ethPrice}
       />
-      <div>new</div>
+      <div>Debug Contract</div>
+      <GenericContract
+        contractName="YourContract"
+        contract={yourContract}
+        mainnetAdaptor={scaffoldAppProviders.mainnetAdaptor}
+        blockExplorer={scaffoldAppProviders.targetNetwork.blockExplorer}
+      />
       <Button
         onClick={() => {
           window.open('https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA');

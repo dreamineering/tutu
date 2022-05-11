@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import { useBlockNumberContext, useEthersContext } from '../context';
+import { useBlockNumberContext, useEthersAppContext } from '../context';
 import {
   ethersOverride,
   mergeDefaultOverride,
@@ -13,7 +13,10 @@ import { useEthersUpdater } from '../hooks/useEthersUpdater';
 import { THookResult, TOverride, TUpdateOptions } from '../models';
 import { keyNamespace } from '../models/constants';
 
-const queryKey: TRequiredKeys = { namespace: keyNamespace.signer, key: 'useTimestamp' } as const;
+const queryKey: TRequiredKeys = {
+  namespace: keyNamespace.signer,
+  key: 'useTimestamp',
+} as const;
 
 /**
  * #### Summary
@@ -33,10 +36,13 @@ export const useTimestamp = (
   override: TOverride = mergeDefaultOverride()
 ): THookResult<number> => {
   const blockNumber = useBlockNumberContext();
-  const ethersContext = useEthersContext(override.alternateContextKey);
+  const ethersContext = useEthersAppContext(override.alternateContextKey);
   const { provider } = ethersOverride(ethersContext, override);
 
-  const keys = [{ ...queryKey, ...providerKey(provider) }, { blockNumber }] as const;
+  const keys = [
+    { ...queryKey, ...providerKey(provider) },
+    { blockNumber },
+  ] as const;
   const { data, refetch, status } = useQuery(
     keys,
     async (keys): Promise<number> => {

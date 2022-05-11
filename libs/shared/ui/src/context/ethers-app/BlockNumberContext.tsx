@@ -3,7 +3,7 @@ import { useIsMounted } from 'usehooks-ts';
 
 import { BlockNumberReactContext } from './BlockNumberReactContext';
 
-import { useEthersContext } from '../../context';
+import { useEthersAppContext } from '..';
 import { ethersOverride } from '../../functions';
 import { defaultOverride, TOverride } from '../../models';
 
@@ -54,10 +54,10 @@ const reducer = (state: State = {}, payload: Payload): State => {
  *
  *
  * ##### ✏️ Notes
- * - this extensively used to trigger hooks when a new block arrives
+ * - this extensively used by eth-hooks to trigger hooks when a new block arrives
  * - uses the current provider {@link ethersProvider} from {@link useEthersContext}
  *
- * @category EthersContext
+ * @category EthersAppContext
  *
  * @returns current block number
  */
@@ -83,19 +83,25 @@ interface IBlockNumberContextProps {
  * #### Summary
  * A context that works with {@link useBlockNumberContext} to give access to the current provider's block number in any place in your app
  *
- * @category EthersContext
+ * @category EthersAppContext
  *
  * @param props
  * @returns
  */
 export const BlockNumberContext: FC<IBlockNumberContextProps> = (props) => {
-  const ethersContext = useEthersContext(props.override?.alternateContextKey);
-  const { chainId, provider } = ethersOverride(ethersContext, props.override ?? defaultOverride());
+  const ethersContext = useEthersAppContext(
+    props.override?.alternateContextKey
+  );
+  const { chainId, provider } = ethersOverride(
+    ethersContext,
+    props.override ?? defaultOverride()
+  );
 
   const isMounted = useIsMounted();
   const [state, dispatch] = useReducer(reducer, {});
   undefined;
-  const blockNumber: number | undefined = chainId && state?.[chainId] ? state?.[chainId] : 0;
+  const blockNumber: number | undefined =
+    chainId && state?.[chainId] ? state?.[chainId] : 0;
 
   useEffect(() => {
     if (chainId && provider) {
@@ -123,5 +129,9 @@ export const BlockNumberContext: FC<IBlockNumberContextProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chainId, provider, isMounted]);
 
-  return <BlockNumberReactContext.Provider value={blockNumber}>{props.children} </BlockNumberReactContext.Provider>;
+  return (
+    <BlockNumberReactContext.Provider value={blockNumber}>
+      {props.children}{' '}
+    </BlockNumberReactContext.Provider>
+  );
 };

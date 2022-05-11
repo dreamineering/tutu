@@ -1,7 +1,7 @@
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types';
 import { Signer } from 'ethers';
 
-import { TEthersModalConnector } from '../context/ethers/connectors/EthersModalConnector';
+import { TEthersModalConnector } from '../context/ethers-app/connectors/EthersModalConnector';
 import { TEthersProvider, TEthersSigner } from '../models';
 
 /**
@@ -12,9 +12,11 @@ import { TEthersProvider, TEthersSigner } from '../models';
  * - can be used by components that need to give a connector to {@link IEthersContext.openModal}
  * - id is the identifier of the provider:  [See docs](https://github.com/Web3Modal/web3modal#connect-to-specific-provider)
  *
- * @category EthersContext
+ * @category EthersAppContext
  */
-export type TCreateEthersModalConnector = (id?: string) => TEthersModalConnector | undefined;
+export type TCreateEthersModalConnector = (
+  id?: string
+) => TEthersModalConnector | undefined;
 
 /**
  * #### Summary
@@ -24,9 +26,10 @@ export type TCreateEthersModalConnector = (id?: string) => TEthersModalConnector
  * - the current account, chainId and signer
  * - callbacks to open the web3Modal, logout or change theme
  *
- * @category EthersContext
+ * @category EthersAppContext
  */
-export interface IEthersContext extends Web3ReactContextInterface<TEthersProvider> {
+export interface IEthersContext
+  extends Web3ReactContextInterface<TEthersProvider> {
   connector: TEthersModalConnector | undefined;
   provider: TEthersProvider | undefined;
   active: boolean;
@@ -37,7 +40,10 @@ export interface IEthersContext extends Web3ReactContextInterface<TEthersProvide
   /**
    * Open web3 modal for login
    */
-  openModal: (ethersModalConnector: TEthersModalConnector, onError?: (error: Error) => void) => void;
+  openModal: (
+    ethersModalConnector: TEthersModalConnector,
+    onError?: (error: Error) => void
+  ) => void;
   disconnectModal: (onSuccess?: () => void) => void;
   setModalTheme: ((theme: 'light' | 'dark') => void) | undefined;
 }
