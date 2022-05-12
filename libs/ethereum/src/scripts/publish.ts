@@ -1,7 +1,8 @@
+import * as fs from 'fs';
+
 // taken from scaffold eth
 import '@nomiclabs/hardhat-ethers';
 import '@nomiclabs/hardhat-waffle';
-import * as fs from 'fs';
 
 import chalk from 'chalk';
 

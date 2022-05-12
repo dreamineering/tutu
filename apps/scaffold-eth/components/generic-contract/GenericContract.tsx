@@ -11,7 +11,7 @@ import { BaseContract, ContractFunction } from 'ethers';
 import { FunctionFragment } from 'ethers/lib/utils';
 
 import { useContractExistsAtAddress } from '@drmg/shared/ui'; // from 'eth-hooks';
-import { useEthersContext } from '@drmg/shared/ui'; // from 'eth-hooks/context';
+import { useEthersAppContext } from '@drmg/shared/ui'; // from 'eth-hooks/context';
 import { TEthersAdaptor } from '@drmg/shared/ui'; //from 'eth-hooks/models';
 import { Account } from '@drmg/shared/ui'; // component
 
@@ -39,7 +39,7 @@ interface IGenericContract<GContract extends BaseContract> {
 export const GenericContract = <GContract extends BaseContract>(
   props: PropsWithChildren<IGenericContract<GContract>>
 ): ReturnType<FC<IGenericContract<GContract>>> => {
-  const ethersAppContext = useEthersContext();
+  const ethersAppContext = useEthersAppContext();
   const [contractIsDeployed, updateContractIsDeployed] =
     useContractExistsAtAddress(props.contract);
   const [refreshRequired, setTriggerRefresh] = useState(false);
