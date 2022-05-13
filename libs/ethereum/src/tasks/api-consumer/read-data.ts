@@ -1,8 +1,8 @@
 import { task } from 'hardhat/config';
 import { HardhatRuntimeEnvironment, TaskArguments } from 'hardhat/types';
+import { BigNumber, constants } from 'ethers';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { APIConsumer, APIConsumer__factory } from '../../generated/typechain';
-import { BigNumber, constants } from 'ethers';
 
 task(
   'read-data',
