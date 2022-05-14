@@ -13,13 +13,8 @@ import "hardhat/console.sol";
  * @title DEX Template
  * @author stevepham.eth and m00npapi.eth
  * @notice Empty DEX.sol that just outlines what features could be part of the challenge (up to you!)
- * @dev We want to create an automatic market where our contract will hold reserves of both ETH and 🎈 Balloons. 
+ * @dev Create an automatic market where our contract will hold reserves of both ETH and 🎈 Balloons. 
    These reserves will provide liquidity that allows anyone to swap between the assets.
- * NOTE: functions outlined here are what work with the front end of this branch/repo. 
-   
-   Also return variable names that may need to be specified exactly may be referenced 
-   
-   (if you are confused, see solutions folder in this repo and/or cross reference with front-end code).
  */
 contract DEX {
     /* ========== GLOBAL VARIABLES ========== */
@@ -190,7 +185,7 @@ contract DEX {
         totalLiquidity = totalLiquidity.add(liquidityMinted);
         console.log("totalLiquidity", totalLiquidity);
 
-        // TODO: check security best practice for transferFrom
+        // TODO: research/confirm security best practice for transferFrom
         // using the balloon token's transferFrom method
         // transfer tokenDeposit amount from the msg.sender/User
         // to a balance on the Balloons contract for this DEX contract
@@ -204,7 +199,7 @@ contract DEX {
 
     /**
      * @notice allows withdrawal of $BAL and $ETH from liquidity pool
-     * NOTE: with this current code, the msg caller could end up getting very little back if the liquidity is super low in the pool. I guess they could see that with the UI.
+     * NOTE: with this current code, the msg caller could end up getting very little back if the liquidity is super low in the pool. 
      */
     function withdraw(uint256 amount) public returns (uint256 eth_amount, uint256 token_amount) {
         require(liquidity[msg.sender] >= amount, "withdraw: sender does not have enough liquidity to withdraw.");
