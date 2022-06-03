@@ -102,25 +102,25 @@ Uncomment **tasks** import.
 
 ### Development
 
-If you have issues
-
-Open
-
-```bash
-nx run ethereum:hh-deploy
-```
-
-```bash
-nx run ethereum:hh-node
-```
-
-If issues, clean, deploy, and hh-node
+If you have issues the the build run clean then re-run deploy, and hh-node
 
 ```bash
 nx run ethereum:hh-clean
 ```
 
-## Importing Contracts
+Otherwise to run hardhat deploy and hh-node
+
+```bash
+nx run ethereum:hh-deploy
+```
+
+Then start dev node
+
+```bash
+nx run ethereum:hh-node
+```
+
+## Import Contracts into Next App
 
 Ethereum Lib: Export generated output in _libs/ethereum/src/index.ts_
 
