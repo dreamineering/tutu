@@ -81,6 +81,8 @@ Evolve [roadmaps](https://mm.dreamineering.com/docs/engineering/software/develop
 
 ## Getting Started
 
+Signup for integration accounts and [populate environment variables](https://mm.dreamineering.com/docs/projects/monorepo-apps/development/environment-vars).
+
 ### First Build
 
 Workaround: after clone and yarn install in hardhat.config.ts comment out **tasks** import as these are dependent on generated **typechain** files.
@@ -99,6 +101,8 @@ nx run ethereum:hh-typechain
 Uncomment **tasks** import.
 
 ### Development
+
+If you have issues
 
 Open
 
