@@ -26,7 +26,7 @@ import {
 
 // Tasks
 import './libs/ethereum/src/tasks';
-import { getMnemonic } from './libs/ethereum/src/tasks/functions/mnemonic';
+// import { getMnemonic } from './libs/ethereum/src/tasks/functions/mnemonic';
 
 // import { receiveMessageOnPort } from 'worker_threads';
 

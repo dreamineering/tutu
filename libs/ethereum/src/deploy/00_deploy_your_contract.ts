@@ -7,12 +7,14 @@ const func: DeployFunction = async (
   const { getNamedAccounts, deployments } = hre;
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
-  await deploy('YourContract', {
+  const myContract = await deploy('YourContract', {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
     // args: ["Hello"],
     log: true,
   });
+
+  console.log('Contract Address is:', myContract.address);
 
   /*
     // Getting a previously deployed contract
@@ -24,12 +26,3 @@ const func: DeployFunction = async (
 };
 export default func;
 func.tags = ['YourContract'];
-
-/*
-Tenderly verification
-let verification = await tenderly.verify({
-  name: contractName,
-  address: contractAddress,
-  network: targetNetwork,
-});
-*/
