@@ -4,6 +4,19 @@ This all started as a linking thinking exercise which is another way of thinking
 
 ## Intent
 
+Forge a [playbook](https://mm.dreamineering.com/docs/web3/startup-playbook/) that non-cryptonative people can follow to start a business that has blockchain at its [operational foundations](https://mm.dreamineering.com/docs/principles/platform).
+
+- Value Proposition
+- Direction and Desire
+- Biggest Challenges
+- Conflicting Perspectives
+- Build Belief
+- Test Riskiest Assumptions
+
+## Engineering
+
+Pipe to standardised components to engineer the flow of value. Pure functions with standardised interfaces.
+
 Use [monorepo](https://mm.dreamineering.com/docs/projects/monorepo-apps/) architecture to build multiple apps from shared libraries to create a foundational [Web3 Startup Model](https://mm.dreamineering.com/docs/web3/startups/playbook) that enables the creation of value from ideas with optimal flow.
 
 1. [Understand:](https://mm.dreamineering.com/docs/humans/skills/meta-learning/) [Good Pattterns](https://mm.dreamineering.com/docs/engineering/software/smart-contracts/patterns/) from Bad and why?
@@ -12,7 +25,7 @@ Use [monorepo](https://mm.dreamineering.com/docs/projects/monorepo-apps/) archit
 4. [Coach:](https://mm.dreamineering.com/docs/humans/skills/leadership/coach) create an ecosystem of coaches that help others levelup with [flow](/docs/flow)
 5. [Evolve:](https://mm.dreamineering.com/docs/flow/decide/) collective wisdom through decision making processed used for making future bets
 
-## Approach
+### Evolution
 
 Innovate at the edges then pull proven patterns into the core.
 
